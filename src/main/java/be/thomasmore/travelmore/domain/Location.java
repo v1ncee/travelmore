@@ -1,12 +1,7 @@
 package be.thomasmore.travelmore.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -28,10 +23,12 @@ public class Location {
     public static final String FIND_BY_CODE = "Location.findByCode";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LocationID")
     private int id;
-    @Column(name = "name")
+    @Column(name = "Name")
     private String name;
-    @Column(name = "code")
+    @Column(name = "Code")
     @Size(min=3, max = 5)
     private String code;
 
