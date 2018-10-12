@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "location")
+@Table(name = "Location")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -31,7 +31,7 @@ public class Location {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "code")
+    @Column(name = "city")
     @Size(min=3, max = 5)
     private String code;
 
