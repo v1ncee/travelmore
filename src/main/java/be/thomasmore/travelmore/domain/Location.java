@@ -1,4 +1,4 @@
-package domain;
+package be.thomasmore.travelmore.domain;
 
 
 import javax.persistence.Column;

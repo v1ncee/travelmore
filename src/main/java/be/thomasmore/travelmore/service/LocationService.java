@@ -1,4 +1,4 @@
-package service;
+package be.thomasmore.travelmore.service;
 
 import be.thomasmore.travelmore.domain.Location;
 import be.thomasmore.travelmore.repository.LocationRepository;

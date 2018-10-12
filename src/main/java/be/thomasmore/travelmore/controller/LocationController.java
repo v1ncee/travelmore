@@ -1,4 +1,4 @@
-package controller;
+package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Location;
 import be.thomasmore.travelmore.service.LocationService;
