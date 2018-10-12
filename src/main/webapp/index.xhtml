@@ -5,7 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<h:head><title>Travel More!</title></h:head>
+<h:head>
+    <h:outputStylesheet library="webjars" name="bootstrap/3.3.6/css/bootstrap.min-jsf.css" />
+    <h:outputStylesheet library="webjars" name="bootstrap/3.3.6/css/bootstrap-theme.min-jsf.css" />
+    <h:outputStylesheet library="webjars" name="font-awesome/4.5.0/css/font-awesome.min-jsf.css" />
+    <title>Travel More!</title>
+</h:head>
 <h:body>
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
       <p:dataTable var="location" value="#{locationController.locations}" id="locationDataTable">

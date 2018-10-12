@@ -17,6 +17,21 @@
             <artifactId>primefaces</artifactId>
             <version>6.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>4.5.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>travelmore</finalName>
