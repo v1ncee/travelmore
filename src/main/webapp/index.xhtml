@@ -12,6 +12,7 @@
     <title>Travel More!</title>
 </h:head>
 <h:body>
+<<<<<<< HEAD
 
 
 
@@ -20,11 +21,42 @@
          <p:column headerText="Id">
             <h:outputText value="#{location.id}" />
          </p:column>
+=======
+    <div class="container">
+        <div>
+            <h:graphicImage name="/images/headerlogo.png" alt="headerlogo" width="200"/>
+                <p:commandLink id="ajax" actionListener="#{locationController.submit}">
+                    <h:outputText value="Inloggen" />
+                </p:commandLink>
+                <p:commandLink id="ajax" actionListener="#{locationController.submit}">
+                    <h:outputText value="Registreren" />
+                </p:commandLink>
+        </div>
 
-         <p:column headerText="Name">
-            <h:outputText value="#{location.name}" />
-         </p:column>
+        <div>
+            <div>Zoek een reis:</div>
+            <p:inputText ></p:inputText>
+            <h:commandButton value="Zoeken" action="#{locationController.submit}" update=":locationDataTable" />
+        </div>
 
+        <p:dataTable var="location" value="#{locationController.locations}" id="locationDataTable">
+            <p:column headerText="Id">
+                <h:outputText value="#{location.id}" />
+            </p:column>
+
+            <p:column headerText="Name">
+                <h:outputText value="#{location.name}" />
+            </p:column>
+
+            <p:column headerText="Code">
+                <h:outputText value="#{location.code}" />
+            </p:column>
+        </p:dataTable>
+    </div>
+>>>>>>> ebc02cabaf28ec6b0537589560e5b89475395614
+
+
+<<<<<<< HEAD
          <p:column headerText="Code">
             <h:outputText value="#{location.code}" />
          </p:column>
@@ -41,5 +73,7 @@
             </h:panelGrid>
          </p:panel>
       </h:form>-->
+=======
+>>>>>>> ebc02cabaf28ec6b0537589560e5b89475395614
 </h:body>
 </html>
