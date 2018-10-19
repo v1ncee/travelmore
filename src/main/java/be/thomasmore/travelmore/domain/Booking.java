@@ -19,9 +19,7 @@ import javax.validation.constraints.Size;
         }
 )
 public class Booking {
-<<<<<<< HEAD
-	
-=======
+
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findByID";
 
@@ -90,5 +88,5 @@ public class Booking {
 
 
 
->>>>>>> 618ff719d7daae7c605a420acb5b128a9c7c44e2
+
 }
