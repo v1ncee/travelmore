@@ -12,27 +12,37 @@
 <h:body>
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="person" value="#{personController.persons}" id="personDataTable">
+    <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable">
         <p:column headerText="Id">
-            <h:outputText value="#{person.id}" />
+            <h:outputText value="#{booking.id}" />
         </p:column>
 
-        <p:column headerText="FirstName">
-            <h:outputText value="#{person.firstName}" />
+        <p:column headerText="Persons">
+            <h:outputText value="#{booking.persons}" />
         </p:column>
 
-        <p:column headerText="lastName">
-            <h:outputText value="#{person.lastName}" />
+        <p:column headerText="payed">
+            <h:outputText value="#{booking.payed}" />
         </p:column>
 
-        <p:column headerText="Email">
-            <h:outputText value="#{person.email}" />
+        <p:column headerText="Note">
+            <h:outputText value="#{booking.note}" />
         </p:column>
-        <p:column headerText="PassKey">
-            <h:outputText value="#{person.passKey}" />
+
+        <p:column headerText="PersonFirstname">
+            <h:outputText value="#{booking.person.firstName}" />
         </p:column>
-        <p:column headerText="TypeUser">
-            <h:outputText value="#{person.typeUser}" />
+        <p:column headerText="PersonLastname">
+            <h:outputText value="#{booking.person.lastName}" />
+        </p:column>
+        <p:column headerText="PersonEmail">
+            <h:outputText value="#{booking.person.email}" />
+        </p:column>
+        <p:column headerText="PersonPassKey">
+            <h:outputText value="#{booking.person.passKey}" />
+        </p:column>
+        <p:column headerText="PersonTypeUser">
+            <h:outputText value="#{booking.person.typeUser}" />
         </p:column>
     </p:dataTable>
     <h:form id="addLocationForm">
