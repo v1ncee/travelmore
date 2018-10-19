@@ -12,28 +12,43 @@
 <h:body>
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="location" value="#{locationController.locations}" id="locationDataTable">
+    <p:dataTable var="person" value="#{personController.persons}" id="personDataTable">
         <p:column headerText="Id">
-            <h:outputText value="#{location.id}" />
+            <h:outputText value="#{person.id}" />
         </p:column>
 
-        <p:column headerText="Name">
-            <h:outputText value="#{location.name}" />
+        <p:column headerText="FirstName">
+            <h:outputText value="#{person.firstName}" />
         </p:column>
 
-        <p:column headerText="Code">
-            <h:outputText value="#{location.code}" />
+        <p:column headerText="lastName">
+            <h:outputText value="#{person.lastName}" />
+        </p:column>
+
+        <p:column headerText="Email">
+            <h:outputText value="#{person.email}" />
+        </p:column>
+        <p:column headerText="PassKey">
+            <h:outputText value="#{person.passKey}" />
+        </p:column>
+        <p:column headerText="TypeUser">
+            <h:outputText value="#{person.typeUser}" />
         </p:column>
     </p:dataTable>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="locationName" value="Name:" />
-                <p:inputText id="locationName" value="#{locationController.newLocation.name}"></p:inputText>
-                <h:outputLabel for="locationCode" value="Code:" />
-                <p:inputText id="locationCode" value="#{locationController.newLocation.code}">
-                </p:inputText>
-                <h:commandButton value="Toevoegen" action="#{locationController.submit}" update=":locationDataTable" />
+                <h:outputLabel for="personFirstName" value="FirstName:" />
+                <p:inputText id="personFirstName" value="#{personController.newPerson.firstName}"></p:inputText>
+                <h:outputLabel for="personLastName" value="LastName:" />
+                <p:inputText id="personLastName" value="#{personController.newPerson.lastName}"></p:inputText>
+                <h:outputLabel for="personEmail" value="Email:" />
+                <p:inputText id="personEmail" value="#{personController.newPerson.email}"></p:inputText>
+                <h:outputLabel for="personPassKey" value="Passkey:" />
+                <p:inputText id="personPassKey" value="#{personController.newPerson.passKey}"></p:inputText>
+                <h:outputLabel for="personTypeUse" value="Typeuser:" />
+                <p:inputText id="personTypeUse" value="#{personController.newPerson.typeUser}"></p:inputText>
+                <h:commandButton value="Toevoegen" action="#{personController.submit}" update=":personDataTable" />
             </h:panelGrid>
         </p:panel>
     </h:form>
