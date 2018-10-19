@@ -34,17 +34,14 @@ public class Booking {
     @Column(name = "Note")
     private String note;
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     @ManyToOne
     @JoinColumn(name = "PersonID", referencedColumnName = "PersonID")
     private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "TripID", referencedColumnName = "TripID")
+    private Trip trip;
 
 
 
@@ -81,8 +78,21 @@ public class Booking {
     }
 
 
+    public Person getPerson() {
+        return person;
+    }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
 
 
 

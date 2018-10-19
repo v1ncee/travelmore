@@ -12,19 +12,6 @@
 <h:body>
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="trip" value="#{tripController.trips}" id="locationDataTable">
-        <p:column headerText="Id">
-            <h:outputText value="#{trip.id}" />
-        </p:column>
-
-        <p:column headerText="Name">
-            <h:outputText value="#{trip.title}" />
-        </p:column>
-
-        <p:column headerText="Code">
-            <h:outputText value="#{trip.city}" />
-        </p:column>
-    </p:dataTable>
     <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable">
         <p:column headerText="Id">
             <h:outputText value="#{booking.id}" />
@@ -57,6 +44,36 @@
         <p:column headerText="PersonTypeUser">
             <h:outputText value="#{booking.person.typeUser}" />
         </p:column>
+        <p:column headerText="Triptransport">
+            <h:outputText value="#{booking.trip.transport}" />
+        </p:column>
+        <p:column headerText="TriptPrice">
+            <h:outputText value="#{booking.trip.price}" />
+        </p:column>
+        <p:column headerText="TriptStartdate">
+            <h:outputText value="#{booking.trip.startDate}" />
+        </p:column>
+        <p:column headerText="Triptenddate">
+            <h:outputText value="#{booking.trip.endDate}" />
+        </p:column>
+        <p:column headerText="TriptPlace">
+            <h:outputText value="#{booking.trip.places}" />
+        </p:column>
+        <p:column headerText="TriptCountry">
+            <h:outputText value="#{booking.trip.country}" />
+        </p:column>
+        <p:column headerText="TriptCity">
+            <h:outputText value="#{booking.trip.city}" />
+        </p:column>
+        <p:column headerText="TriptTitle">
+            <h:outputText value="#{booking.trip.title}" />
+        </p:column>
+        <p:column headerText="TriptLocation">
+            <h:outputText value="#{booking.trip.location.name}" />
+        </p:column>
+
+
+
     </p:dataTable>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
