@@ -45,6 +45,14 @@ public class Trip {
     @JoinColumn(name = "LocationID")
     private Location location;
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public int getId() {
         return id;
     }
