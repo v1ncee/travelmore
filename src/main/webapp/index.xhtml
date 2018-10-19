@@ -12,6 +12,7 @@
 <h:body>
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
+<<<<<<< HEAD
     <p:dataTable var="trip" value="#{tripController.trips}" id="locationDataTable">
         <p:column headerText="Id">
             <h:outputText value="#{trip.id}" />
@@ -25,6 +26,58 @@
             <h:outputText value="#{trip.city}" />
         </p:column>
     </p:dataTable>
+=======
+    <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable">
+        <p:column headerText="Id">
+            <h:outputText value="#{booking.id}" />
+        </p:column>
+
+        <p:column headerText="Persons">
+            <h:outputText value="#{booking.persons}" />
+        </p:column>
+
+        <p:column headerText="payed">
+            <h:outputText value="#{booking.payed}" />
+        </p:column>
+
+        <p:column headerText="Note">
+            <h:outputText value="#{booking.note}" />
+        </p:column>
+
+        <p:column headerText="PersonFirstname">
+            <h:outputText value="#{booking.person.firstName}" />
+        </p:column>
+        <p:column headerText="PersonLastname">
+            <h:outputText value="#{booking.person.lastName}" />
+        </p:column>
+        <p:column headerText="PersonEmail">
+            <h:outputText value="#{booking.person.email}" />
+        </p:column>
+        <p:column headerText="PersonPassKey">
+            <h:outputText value="#{booking.person.passKey}" />
+        </p:column>
+        <p:column headerText="PersonTypeUser">
+            <h:outputText value="#{booking.person.typeUser}" />
+        </p:column>
+    </p:dataTable>
+    <h:form id="addLocationForm">
+        <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputLabel for="personFirstName" value="FirstName:" />
+                <p:inputText id="personFirstName" value="#{personController.newPerson.firstName}"></p:inputText>
+                <h:outputLabel for="personLastName" value="LastName:" />
+                <p:inputText id="personLastName" value="#{personController.newPerson.lastName}"></p:inputText>
+                <h:outputLabel for="personEmail" value="Email:" />
+                <p:inputText id="personEmail" value="#{personController.newPerson.email}"></p:inputText>
+                <h:outputLabel for="personPassKey" value="Passkey:" />
+                <p:inputText id="personPassKey" value="#{personController.newPerson.passKey}"></p:inputText>
+                <h:outputLabel for="personTypeUse" value="Typeuser:" />
+                <p:inputText id="personTypeUse" value="#{personController.newPerson.typeUser}"></p:inputText>
+                <h:commandButton value="Toevoegen" action="#{personController.submit}" update=":personDataTable" />
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+>>>>>>> 618ff719d7daae7c605a420acb5b128a9c7c44e2
 </h:body>
 </html>
 
