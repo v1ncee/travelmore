@@ -1,0 +1,291 @@
+
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+html{
+    scroll-behavior: smooth;
+    overflow-x:hidden;
+}
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar {
+    background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+    background: #cccccc;
+}
+.section-start{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background: url("#{resource['images:bgimg.jpg']}")  center center no-repeat;
+    background-size: cover;
+}
+.section-start:before{
+    content: '';
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:linear-gradient(#000,transparent);
+    opacity:0.3;
+}
+.header{
+    position:fixed;
+    width:100%;
+    height:5vh;
+    font-size:18px;
+    z-index:3;
+}
+.logo{
+    position: relative;
+    margin-top:1%;
+    height:100%;
+    width:9.6%;
+    background-image: url("#{resource['images:logo.png']}");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    float:left;
+}
+.login-buttons{
+    float:right;
+    margin-top:1%;
+    margin-right:1.5%;
+    color:white;
+}
+.login-buttons a {
+    color: white;
+}
+.wrapper-filter {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.filter{
+    position:relative;
+    top:40%;
+    left:25%;
+    text-align: center;
+    width:50%;
+    height:5vh;
+    background-color: white;
+    z-index:2;
+    border-radius:10px;
+    box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.20);
+
+}
+.filter-text{
+    position:relative;
+    top:30%;
+    left:25%;
+    text-align: center;
+    width:50%;
+    height:5vh;
+    font-size:80px;
+    color:white;
+    font-family: 'Caveat Brush', cursive;
+
+}
+.left-bar{
+
+    width:10%;
+    height:100%;
+    background-color: #F7F7F7;
+    float:left;
+    clear:none;
+}
+.section-info{
+    display:inline-flex;
+    width:100%;
+    height:80vh;
+}
+.info-text{
+    flex:1;
+    font-size:26px;
+    font-weight: lighter;
+    color:#525153 !important;
+    height:100%;
+    padding-top:10%;
+    padding-left:5%;
+
+}
+h1{
+    font-size:30px;
+    background: linear-gradient(to bottom right,#FDC830,#F37335);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.info-image{
+    flex:1;
+    background-image: url("#{resource['images:photo-info.jpeg']}");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin-right:5%;
+    margin-left:5%;
+
+}
+.border-image{
+    position:relative;
+    top:23vh;
+    right:2.5vw;
+    width:100%;
+    height:24vw;
+    border:10px #FDC830 solid;
+
+}
+.section-photos{
+    width:100%;
+    height:80vh;
+    margin-top:-1%;
+}
+.photo-row{
+    position:relative;
+    display:inline-flex;
+    width:90%;
+    height:50%;
+    clear:none;
+    float:right;
+}
+.photo{
+    flex:1;
+    position:relative;
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#photo1{
+    background-image: url("#{resource['images:travel_image1.jpg']}");
+}
+#photo2{
+    background-image: url("#{resource['images:travel_image2.jpg']}");
+}
+#photo3{
+    background-image: url("#{resource['images:travel_image3.jpg']}");
+}
+#photo4{
+    background-image: url("#{resource['images:travel_image4.jpg']}");
+}
+#photo5{
+    background-image: url("#{resource['images:travel_image5.jpg']}");
+}
+#photo6{
+    background-image: url("#{resource['images:travel_image6.jpg']}");
+}
+
+.section-extra{
+    width:100%;
+    height:40vh;
+    font-size: 40px;
+}
+.extra-text{
+    padding-top:13vh;
+    margin:0 auto;
+    text-align: center;
+    clear:right;
+}
+.button{
+    position:relative;
+    margin:20px 50vw;
+    width:183px;
+    padding:2px;
+    background: linear-gradient(to bottom right,#FDC830,#F37335);
+    border-radius:2px;
+}
+.button-text{
+    text-align: center;
+    font-size: 30px;
+    padding:8px;
+    background-color: #fff;
+}
+.button-text a{
+    color: #525153;
+}
+.section-footer{
+    display:inline-flex;
+    width:100%;
+    height:30vh;
+    background-color: #222127;
+    color:white;
+}
+.footer-left{
+    flex:1;
+    padding-top:2vh;
+    margin-left:12vw;
+}
+.footer-middle{
+    flex:1;
+    padding-top:2vh;
+}
+.footer-right{
+    flex:1;
+    padding-top:2vh;
+}
+.footer-right span{
+    margin-right:90px;
+}
+a{
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+a:before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background:white;
+    top:60%;
+    animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+a:hover:before{
+    animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+}
+@keyframes in{
+    0%{
+        width: 0;
+        left:0;
+        right:auto;
+    }
+    100%{
+        left:0;
+        right:auto;
+        width: 100%;
+    }
+}
+@keyframes out{
+    0%{
+        width:100%;
+        left: auto;
+        right: 0;
+    }
+    100%{
+        width: 0;
+        left: auto;
+        right: 0;
+    }
+}
