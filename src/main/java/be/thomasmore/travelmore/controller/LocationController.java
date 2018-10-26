@@ -29,6 +29,11 @@ public class LocationController {
         return this.locationService.findAllLocations();
     }
 
+    public List<Location> getLocationsByName(String name){
+        return this.locationService.findLocationByName(name);
+    }
+
+
     public void submit(){
         this.locationService.insert(newLocation);
     }
