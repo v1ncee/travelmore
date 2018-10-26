@@ -12,69 +12,42 @@
 <h:body>
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable">
+    <p:dataTable var="trip" value="#{tripController.trips}" id="tripallDataTable">
         <p:column headerText="Id">
-            <h:outputText value="#{booking.id}" />
+            <h:outputText value="#{trip.id}" />
         </p:column>
 
-        <p:column headerText="Persons">
-            <h:outputText value="#{booking.persons}" />
+        <p:column headerText="Name">
+            <h:outputText value="#{trip.location.name}" />
         </p:column>
 
-        <p:column headerText="payed">
-            <h:outputText value="#{booking.payed}" />
+        <p:column headerText="country">
+            <h:outputText value="#{trip.country}" />
         </p:column>
-
-        <p:column headerText="Note">
-            <h:outputText value="#{booking.note}" />
+        <p:column headerText="price">
+            <h:outputText value="#{trip.price}" />
         </p:column>
-
-        <p:column headerText="PersonFirstname">
-            <h:outputText value="#{booking.person.firstName}" />
-        </p:column>
-        <p:column headerText="PersonLastname">
-            <h:outputText value="#{booking.person.lastName}" />
-        </p:column>
-        <p:column headerText="PersonEmail">
-            <h:outputText value="#{booking.person.email}" />
-        </p:column>
-        <p:column headerText="PersonPassKey">
-            <h:outputText value="#{booking.person.passKey}" />
-        </p:column>
-        <p:column headerText="PersonTypeUser">
-            <h:outputText value="#{booking.person.typeUser}" />
-        </p:column>
-        <p:column headerText="Triptransport">
-            <h:outputText value="#{booking.trip.transport}" />
-        </p:column>
-        <p:column headerText="TriptPrice">
-            <h:outputText value="#{booking.trip.price}" />
-        </p:column>
-        <p:column headerText="TriptStartdate">
-            <h:outputText value="#{booking.trip.startDate}" />
-        </p:column>
-        <p:column headerText="Triptenddate">
-            <h:outputText value="#{booking.trip.endDate}" />
-        </p:column>
-        <p:column headerText="TriptPlace">
-            <h:outputText value="#{booking.trip.places}" />
-        </p:column>
-        <p:column headerText="TriptCountry">
-            <h:outputText value="#{booking.trip.country}" />
-        </p:column>
-        <p:column headerText="TriptCity">
-            <h:outputText value="#{booking.trip.city}" />
-        </p:column>
-        <p:column headerText="TriptTitle">
-            <h:outputText value="#{booking.trip.title}" />
-        </p:column>
-        <p:column headerText="TriptLocation">
-            <h:outputText value="#{booking.trip.location.name}" />
-        </p:column>
-
-
-
     </p:dataTable>
+    <p:dataTable var="trip" value="#{tripController.getTripsWithLocationName(name)}" id="tripDataTable">
+        <p:column headerText="Id">
+            <h:outputText value="#{trip.id}" />
+        </p:column>
+
+        <p:column headerText="Name">
+            <h:outputText value="#{trip.location.name}" />
+        </p:column>
+
+        <p:column headerText="country">
+            <h:outputText value="#{trip.country}" />
+        </p:column>
+        <p:column headerText="price">
+            <h:outputText value="#{trip.price}" />
+        </p:column>
+    </p:dataTable>
+    <h:form>
+        <p:inputText id="name" value="#{name}"></p:inputText>
+        <h:commandButton value="Zoek" action="#{tripController.getTripsWithLocationName(name)}" update=":tripDataTable" />
+    </h:form>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">

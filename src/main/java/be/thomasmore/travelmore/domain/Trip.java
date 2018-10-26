@@ -11,13 +11,19 @@ import java.util.Date;
         @NamedQuery(
             name = Trip.FIND_ALL,
                 query = "SELECT t from Trip t"
-        )
+        ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_LOCATION_NAME,
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where l.name LIKE :name"
+            )
     }
 )
 
 public class Trip {
     public static final String FIND_ALL = "Trip.findAll";
     /*public static final String FIND_BY_CODE = "Trip.findByCode";*/
+    public static final String FIND_ALL_LOCATION_NAME = "Trip.findAllLocationName";
+
 
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TripID")
