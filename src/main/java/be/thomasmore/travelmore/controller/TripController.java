@@ -29,6 +29,10 @@ public class TripController {
         return this.tripService.findAllTrips();
     }
 
+    public List<Trip> getTripsWithLocationName(String name){
+        return this.tripService.findAllTripsWithLocationName(name);
+    }
+
     public void submit(){
         this.tripService.insert(newTrip);
     }

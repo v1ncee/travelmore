@@ -20,9 +20,9 @@ public class TripService {
         return tripRepository.findAll();
     }
 
-    /*public Trip findTripByCode(String code) {
-        return tripRepository.findByCode(code);
-    }*/
+    public List<Trip> findAllTripsWithLocationName(String name) {
+        return tripRepository.findByLocationName(name);
+    }
 
     public void updateName(int id, String newName) {
         Trip trip = tripRepository.findById(id);
