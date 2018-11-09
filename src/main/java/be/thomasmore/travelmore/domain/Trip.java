@@ -67,6 +67,7 @@ public class Trip {
     @Column(name = "City")
     private String city;
 
+
     @OneToOne
     @JoinColumn(name = "LocationID")
     private Location location;

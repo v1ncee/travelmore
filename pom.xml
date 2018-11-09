@@ -27,6 +27,13 @@
             <artifactId>font-awesome</artifactId>
             <version>4.5.0</version>
         </dependency>
+        <!---->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.6.1.Final</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>travelmore</finalName>

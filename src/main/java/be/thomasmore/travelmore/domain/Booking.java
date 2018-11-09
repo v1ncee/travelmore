@@ -18,6 +18,10 @@ import javax.validation.constraints.Size;
                 )
         }
 )
+
+//Bij een boeking moeten plaatsen verminderen
+
+
 public class Booking {
 
     public static final String FIND_ALL = "Booking.findAll";
@@ -77,7 +81,6 @@ public class Booking {
         this.note = note;
     }
 
-
     public Person getPerson() {
         return person;
     }
@@ -93,10 +96,5 @@ public class Booking {
     public void setTrip(Trip trip) {
         this.trip = trip;
     }
-
-
-
-
-
 
 }
