@@ -45,7 +45,7 @@ public class Person {
     @Column(name = "PassKey")
     private String passKey;
     @Column(name = "TypeUser")
-    private String typeUser;
+    private int typeUser;
 
 
     public String getFirstName() {
@@ -80,11 +80,11 @@ public class Person {
         this.passKey = passKey;
     }
 
-    public String getTypeUser() {
+    public int getTypeUser() {
         return typeUser;
     }
 
-    public void setTypeUser(String typeUser) {
+    public void setTypeUser(int typeUser) {
         this.typeUser = typeUser;
     }
 
@@ -92,8 +92,8 @@ public class Person {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
 }

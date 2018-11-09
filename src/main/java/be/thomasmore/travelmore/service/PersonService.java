@@ -35,5 +35,4 @@ public class PersonService {
     public void insert(Person person) {
         personRepository.insert(person);
     }
-
 }

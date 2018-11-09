@@ -1,6 +1,5 @@
 package be.thomasmore.travelmore.repository;
 
-import be.thomasmore.travelmore.domain.Location;
 import be.thomasmore.travelmore.domain.Person;
 
 import javax.persistence.EntityManager;
@@ -16,7 +15,14 @@ public class PersonRepository {
     }
 
     public Person findByEmail(String email) {
-        return entityManager.find(Person.class, email);
+        List<Person> resultsFindByEmail = entityManager.createNamedQuery(Person.FIND_BY_EMAIL, Person.class).setParameter("email", email).getResultList();
+
+        if (resultsFindByEmail.size() > 0) {
+            return resultsFindByEmail.get(0);
+        }
+        else {
+            return null;
+        }
     }
 
     public List<Person> findAll() {
