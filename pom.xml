@@ -27,6 +27,7 @@
             <artifactId>font-awesome</artifactId>
             <version>4.5.0</version>
         </dependency>
+        <!---->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
