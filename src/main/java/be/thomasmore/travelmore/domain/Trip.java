@@ -73,8 +73,8 @@ public class Trip {
     private Location location;
 
     @OneToOne
-    @JoinColumn(name = "VertrekLocationID")
-    private Location vertreklocation;
+    @JoinColumn(name = "DepartLocationID")
+    private Location departlocation;
 
     public int getId() {
         return id;
@@ -156,11 +156,13 @@ public class Trip {
         this.location = location;
     }
 
-    public Location getVertreklocation() {
-        return vertreklocation;
+
+    public Location getDepartlocation() {
+        return departlocation;
     }
 
-    public void setVertreklocation(Location vertreklocation) {
-        this.vertreklocation = vertreklocation;
+    public void setDepartlocation(Location departlocation) {
+        this.departlocation = departlocation;
     }
+
 }
