@@ -14,29 +14,39 @@
 </h:head>
 <h:body>
     <div class="con"></div>
-    <div class="login-box">
+    <div class="register-box">
         <div class="left">
             <div class="logo"></div>
         </div>
         <div class="right">
-            <div class="title">L O G I N</div>
+            <div class="title">R E G I S T E R</div>
             <div class="desc"></div>
             <div class="form">
                 <h:form>
                     <div class="input-field" >
-                        <i class="material-icons prefix">account_circle</i>
+                        <!--<i class="material-icons prefix">account_circle</i>-->
+                        <input type="text" id="firstName" class="validate" />
+                        <label for="firstName">First name</label>
+                    </div>
+                    <div class="input-field" >
+                        <!--<i class="material-icons prefix">account_circle</i>-->
+                        <input type="text" id="lastName" class="validate" />
+                        <label for="lastName">Last name</label>
+                    </div>
+                    <div class="input-field" >
+                        <!--<i class="material-icons prefix">email</i>-->
                         <input type="email" id="username" class="validate" />
                         <label for="username">E-mail</label>
                     </div>
                     <div class="input-field" >
-                        <i class="material-icons prefix">lock</i>
+                        <!--<i class="material-icons prefix">lock</i>-->
                         <input type="password" id="password" class="validate" />
                         <label for="password">Password</label>
                         <input type="submit" value="S U B M I T" class="button" />
                     </div>
                 </h:form>
                 <div class="link">
-                    <a href="register.xhtml">Register here!</a>
+                    <a href="login.xhtml">Login here!</a>
                 </div>
             </div>
         </div>
