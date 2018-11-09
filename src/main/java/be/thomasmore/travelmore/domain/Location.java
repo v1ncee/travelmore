@@ -10,10 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = Location.FIND_BY_CODE,
-                        query = "SELECT l FROM Location l WHERE l.code = :code"
-                ),
-                @NamedQuery(
                         name = Location.FIND_ALL,
                         query = "SELECT l FROM Location l"
                 )
@@ -23,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "location")
 public class Location {
     public static final String FIND_ALL = "Location.findAll";
-    public static final String FIND_BY_CODE = "Location.findByCode";
+    public static final String FIND_BY_NAME = "Location.findByName";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

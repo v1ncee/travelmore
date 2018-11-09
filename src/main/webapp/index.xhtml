@@ -6,11 +6,96 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <h:outputStylesheet library="webjars" name="font-awesome/4.5.0/css/font-awesome.min-jsf.css" />
+    <h:outputStylesheet library="css" name="materialize.css" />
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="norm.css" />
     <title>Travel More!</title>
 </h:head>
 <h:body>
+    <div class="scrollbar" id="style-1">
+        <div class="force-overflow"></div>
+    </div>
+    <div class="section-start">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="login-buttons">
+                <a href="login.xhtml">Login</a>
+                //
+                <a href="register.xhtml">Register</a>
+            </div>
+        </div>
+        <div class="wrapper-filter">
+            <div class="filter-text">Find More:</div>
+            <div class="filter"></div>
+        </div>
+    </div>
+    <div class="section-info">
+        <div class="left-bar"></div>
+        <div class="info-text">
+            <h1>About Us</h1>
+            In the past 10 years, travelmore has grown to be one of the best and most popular travel websites in the world.
+            This is because of the policy we apply in all of our decisions, which is: "Customers first!".
+            We tend to give our customers the best experience we can offer, by providing them with the best deals for the lowest price.
+            And above all, making our services available for free.
+        </div>
+        <div class="info-image">
+            <div class="border-image"></div>
+        </div>
+    </div>
+    <div class="section-photos">
+        <div class="left-bar"></div>
+        <div class="photo-row">
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo1"/>
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo2"/>
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo3"/>
+        </div>
+        <div class="photo-row">
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo4"/>
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo5"/>
+            <img src="./resources/images/scrollbar.png" alt="" class="photo materialboxed" id="photo6"/>
+        </div>
+    </div>
+    <div class="section-extra">
+        <div class="left-bar"></div>
+        <div class="extra-text">
+            Don't wait start your dream journey right now!
+            <div class="button">
+                <div class="button-text"><a href="#">Find More</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="section-footer">
+        <div class="footer-left">
+            <p><strong>Contact us</strong></p>
+            <p><i class="material-icons">email</i>&nbsp; info@travelmore.com</p>
+            <p><i class="material-icons">local_phone</i>&nbsp; 0412/34.56.78</p>
+            <p><i class="material-icons">map</i>&nbsp; Kleinhoefstraat 4, 2440 Geel</p>
+        </div>
+        <div class="footer-middle">
+            <p><strong>Links:</strong></p>
+            <p><a href="#">Home</a></p>
+            <p><a href="#">Login</a></p>
+            <p><a href="#">Register</a></p>
+        </div>
+        <div class="footer-right">
+            <p><strong>Team:</strong></p>
+            <p><span>Eloy Boone</span> Nick Vandepaer</p>
+            <p><span>Tom Nuyts</span>&nbsp;&nbsp;Cezary Fradczak</p>
+            <p>Vincent Duchateau</p>
+            <p></p>
+        </div>
+    </div>
+    <h:outputScript library="js" name="jquery.js" target="head"/>
+    <h:outputScript library="js" name="materialize.js" target="head" />
+    <h:outputScript target="head">
+        $ = jQuery;
+        //<![CDATA[
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
+        var iEn = 1;
+        $(window).on('scroll', function() {
 
+<<<<<<< HEAD
 
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
@@ -94,6 +179,22 @@
             </h:panelGrid>
         </p:panel>
     </h:form>
+=======
+        var hH = $('.logo').outerHeight(),
+        wH = $(window).height() - hH,
+        wS = $(this).scrollTop();
+        if ((wS >= wH) && iEn === 1) {
+        iEn = 0;
+        $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+        }else if((wS <= wH) && iEn === 0){
+        $(".logo").css("background-image",'url("./resources/images/logo.png")');
+        iEn = 1;
+        }
+        });
+        });
+        //]]>
+    </h:outputScript>
+>>>>>>> 6f2c1b8ff291c3618ad4a2c123105be7cec3fde1
 </h:body>
 </html>
 
