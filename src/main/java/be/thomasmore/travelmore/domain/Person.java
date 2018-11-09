@@ -13,6 +13,10 @@ import javax.validation.constraints.Size;
                         query = "SELECT p FROM Person p WHERE p.id = :id"
                 ),
                 @NamedQuery(
+                        name = Person.FIND_BY_EMAIL,
+                        query = "select p from Person p where p.email = :email"
+                ),
+                @NamedQuery(
                         name = Person.FIND_ALL,
                         query = "SELECT p FROM Person p"
                 ),
@@ -25,6 +29,7 @@ import javax.validation.constraints.Size;
 public class Person {
     public static final String FIND_ALL = "Person.findAll";
     public static final String FIND_BY_ID = "Person.findByID";
+    public static final String FIND_BY_EMAIL = "Person.findByEmail";
     public static final String VALIDATE = "Person.validate";
 
     @Id
