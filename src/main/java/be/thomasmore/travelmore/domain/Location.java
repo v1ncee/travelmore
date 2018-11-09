@@ -3,6 +3,7 @@ package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "location")
@@ -18,6 +19,8 @@ import javax.validation.constraints.Size;
                 )
         }
 )
+
+@XmlRootElement(name = "location")
 public class Location {
     public static final String FIND_ALL = "Location.findAll";
     public static final String FIND_BY_CODE = "Location.findByCode";

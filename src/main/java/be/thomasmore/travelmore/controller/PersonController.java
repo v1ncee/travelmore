@@ -1,11 +1,16 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Person;
-import be.thomasmore.travelmore.service.PersonService;
+import be.thomasmore.travelmore.service.*;
+import be.thomasmore.travelmore.Sessions;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean

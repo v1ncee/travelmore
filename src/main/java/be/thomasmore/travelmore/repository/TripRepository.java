@@ -19,7 +19,6 @@ public class TripRepository {
     }
 
 
-
     public void insert(Trip trip) {
         entityManager.persist(trip);
     }

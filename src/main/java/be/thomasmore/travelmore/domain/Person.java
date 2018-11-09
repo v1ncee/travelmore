@@ -15,12 +15,17 @@ import javax.validation.constraints.Size;
                 @NamedQuery(
                         name = Person.FIND_ALL,
                         query = "SELECT p FROM Person p"
+                ),
+                @NamedQuery(
+                        name = Person.VALIDATE,
+                        query = "select p from Person p where p.email = :email and p.passKey = :passKey"
                 )
         }
 )
 public class Person {
     public static final String FIND_ALL = "Person.findAll";
     public static final String FIND_BY_ID = "Person.findByID";
+    public static final String VALIDATE = "Person.validate";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
