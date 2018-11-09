@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+html {
+    scroll-behavior: smooth;
+}
+.con{
+    position:fixed;
+    background-image: url("#{resource['images:bgimg2.jpeg']}");
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100vw;
+    height:100vh;
+    color:#525153;
+    z-index: 1;
+    filter:blur(1px);
+
+}
+.con:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,#FDC830,#F37335);
+    opacity: .8;
+
+}
+.login-box{
+    position:fixed;
+    left: auto;
+    top:20vh;
+    left:30vw;
+    background-color: #fff;
+    border-radius:10px;
+    width:40vw;
+    height:50vh;
+    box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.20);
+    z-index: 999;
+}
+.left{
+    width:40%;
+    height:100%;
+    background-image: url("#{resource['images:bgimg.jpg']}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.logo{
+    background-image: url("#{resource['images:logo.png']}");
+    margin-top:40%;
+    margin-left:25%;
+    width:60%;
+    height:50%;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    background-position: center center;
+}
+.right{
+    width:60%;
+    height:100%;
+    padding:10%;
+}
+.title{
+    text-align: center;
+    font-size:34px;
+    margin-bottom:15%;
+}
+.button{
+    position:relative;
+    width:100%;
+    padding:10px;
+    background: linear-gradient(to bottom right,#FDC830,#F37335);
+    border-radius:2px;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+.button:hover{
+    color:#525153;
+}
+.active{
+    color: #FDC830 !important;
+}
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #FDC830 !important;
+    box-shadow:0 1px 0 0 #FDC830 !important;
+}
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #FDC830 !important;
+    box-shadow:0 1px 0 0 #FDC830 !important;
+}
+.link{
+    width:100%;
+    margin-top:5%;
+    margin-left:8%;
+    text-align: center;
+}
