@@ -37,7 +37,7 @@ public class LoginController {
         if (person != null) {
             HttpSession session = SessionUtilities.getSession();
             session.setAttribute("id", person.getId());
-            session.setAttribute("naam", person.getFirstName());
+            session.setAttribute("name", person.getFirstName());
             session.setAttribute("email", person.getEmail());
 
             return "index";
@@ -50,7 +50,7 @@ public class LoginController {
         HttpSession session = SessionUtilities.getSession();
         session.invalidate();
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
     }
 
 
