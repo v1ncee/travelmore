@@ -54,6 +54,13 @@ public class TripRepository {
         return null;
     }
 
+    public List<Trip> findByDepartLocationName(String name) {
+        if(name != "" && name != null){
+            return entityManager.createNamedQuery(Trip.FIND_ALL_DEPARTLOCATION, Trip.class).setParameter("name", name + "%").getResultList();
+        }
+        return null;
+    }
+
     public void insert(Trip trip) {
         entityManager.persist(trip);
     }

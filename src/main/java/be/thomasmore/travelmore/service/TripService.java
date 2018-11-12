@@ -41,6 +41,10 @@ public class TripService {
         return tripRepository.findByPeriod(startDate, endDate);
     }
 
+    public List<Trip> findAllTripsWithDepartLocationName(String name) {
+        return tripRepository.findByDepartLocationName(name);
+    }
+
     public void updateName(int id, String newName) {
         Trip trip = tripRepository.findById(id);
         trip.setTitle(newName);

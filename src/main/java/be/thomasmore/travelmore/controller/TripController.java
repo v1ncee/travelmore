@@ -67,6 +67,11 @@ public class TripController {
         return this.tripService.findAllTripsBetweenPeriod(startdate, enddate);
     }
 
+    public List<Trip> getTripsWithDepartLocationName(String name){
+        return this.tripService.findAllTripsWithDepartLocationName(name);
+    }
+
+
     public void submit(){
         this.tripService.insert(newTrip);
     }
