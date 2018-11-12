@@ -24,4 +24,8 @@ public class BookingRepository {
         entityManager.persist(booking);
     }
 
+    public void setPayed(Booking booking){
+        entityManager.createNamedQuery(Booking.SETPAYED_BY_ID).setParameter("payed", booking.isPayed()).setParameter("id", booking.getId()).executeUpdate();
+    }
+
 }
