@@ -94,8 +94,20 @@
             $('.materialboxed').materialbox();
         var iEn = 1;
         $(window).on('scroll', function() {
-
-<<<<<<< HEAD
+            var hH = $('.logo').outerHeight(),
+                    wH = $(window).height() - hH,
+                    wS = $(this).scrollTop();
+            if ((wS >= wH) && iEn === 1) {
+                iEn = 0;
+                $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+            }else if((wS <= wH) && iEn === 0){
+                $(".logo").css("background-image",'url("./resources/images/logo.png")');
+                iEn = 1;
+            }
+        });
+        });
+        //]]>
+    </h:outputScript>
 
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
@@ -179,22 +191,7 @@
             </h:panelGrid>
         </p:panel>
     </h:form>
-=======
-        var hH = $('.logo').outerHeight(),
-        wH = $(window).height() - hH,
-        wS = $(this).scrollTop();
-        if ((wS >= wH) && iEn === 1) {
-        iEn = 0;
-        $(".logo").css("background-image",'url("./resources/images/logo2.png")');
-        }else if((wS <= wH) && iEn === 0){
-        $(".logo").css("background-image",'url("./resources/images/logo.png")');
-        iEn = 1;
-        }
-        });
-        });
-        //]]>
-    </h:outputScript>
->>>>>>> 6f2c1b8ff291c3618ad4a2c123105be7cec3fde1
+
 </h:body>
 </html>
 

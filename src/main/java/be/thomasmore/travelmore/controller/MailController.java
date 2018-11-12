@@ -21,13 +21,13 @@ public class MailController {
 //        this.message = message;
 //    }
 //
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
+//    public String getRecipient() {
+//        return recipient;
+//    }
+//
+//    public void setRecipient(String recipient) {
+//        this.recipient = recipient;
+//    }
 //
 //    public String getSubject() {
 //        return subject;
@@ -41,10 +41,10 @@ public class MailController {
         return statusMessage;
     }
 
-    public String send() {
+    public String send(String email, String firstName, String lastName) {
         statusMessage = "Message Sent";
         try {
-            MailService.sendMessage(recipient, "TravelMore | Registratie", "Beste, bedankt voor je registratie bij TravelMore!");
+            MailService.sendMessage(email, "TravelMore | Registratie", "Beste " + firstName + " " + lastName + ", bedankt voor je registratie bij TravelMore!");
         }
         catch(MessagingException ex) {
             statusMessage = ex.getMessage();
@@ -52,7 +52,7 @@ public class MailController {
         return "index";
     }
 
-    private String recipient;
+//    private String recipient;
 //    private String subject;
 //    private String message;
     private String statusMessage = "";
