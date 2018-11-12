@@ -36,4 +36,13 @@ public class BookingController {
         this.bookingService.insert(newBooking);
     }
 
+    public void setPayed(){
+        //hier moet de huidige booking inkomen
+        Booking b = new Booking();
+        b.setId(3);
+        b.setPayed(true);
+
+        this.bookingService.setPayed(b);
+    }
+
 }
