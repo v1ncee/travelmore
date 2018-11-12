@@ -32,10 +32,10 @@ import java.util.Date;
                     name = Trip.FIND_ALL_PERIOD,
                     query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
             ),
-//            @NamedQuery(
-//                    name = Trip.FIND_ALL_DEPARTLOCATION,
-//                    query = "SELECT t FROM Trip t INNER JOIN departlocation dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
-//            )
+            @NamedQuery(
+                    name = Trip.FIND_ALL_DEPARTLOCATION,
+                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
+            )
     }
 )
 
