@@ -13,8 +13,28 @@ import java.util.Date;
                 query = "SELECT t from Trip t"
         ),
             @NamedQuery(
-                    name = Trip.FIND_ALL_LOCATION_NAME,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where l.name LIKE :name"
+            name = Trip.FIND_ALL_LOCATION_NAME,
+            query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where l.name LIKE :name"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_FREE_PLACES,
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.places >= :number"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_PRICE,
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.price <= :price"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_TRANSPORT,
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.transport LIKE :transport"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_PERIOD,
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_DEPARTLOCATION,
+                    query = "SELECT t FROM Trip t INNER JOIN departlocation dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
             )
     }
 )
@@ -23,7 +43,11 @@ public class Trip {
     public static final String FIND_ALL = "Trip.findAll";
     /*public static final String FIND_BY_CODE = "Trip.findByCode";*/
     public static final String FIND_ALL_LOCATION_NAME = "Trip.findAllLocationName";
-
+    public static final String FIND_ALL_FREE_PLACES = "Trip.findAllFreePlaces";
+    public static final String FIND_ALL_PRICE = "Trip.findAllPrice";
+    public static final String FIND_ALL_TRANSPORT = "Trip.findAllTransport";
+    public static final String FIND_ALL_PERIOD = "Trip.findAllBetweenPeriod";
+    public static final String FIND_ALL_DEPARTLOCATION = "Trip.findAllDepartlocation";
 
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TripID")
@@ -51,6 +75,10 @@ public class Trip {
     @OneToOne
     @JoinColumn(name = "LocationID")
     private Location location;
+
+    @OneToOne
+    @JoinColumn(name = "DepartLocationID")
+    private Location departlocation;
 
     public int getId() {
         return id;
@@ -131,4 +159,14 @@ public class Trip {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+
+    public Location getDepartlocation() {
+        return departlocation;
+    }
+
+    public void setDepartlocation(Location departlocation) {
+        this.departlocation = departlocation;
+    }
+
 }
