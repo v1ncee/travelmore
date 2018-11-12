@@ -18,8 +18,16 @@ public class PersonService {
         return personRepository.findById(id);
     }
 
+    public Person findPersonByEmail(String email) {
+        return personRepository.findByEmail(email);
+    }
+
     public List<Person> findAllPersons() {
         return personRepository.findAll();
+    }
+
+    public Person validateLogin(String email, String password) {
+        return personRepository.validate(email, password);
     }
 
 
@@ -27,5 +35,4 @@ public class PersonService {
     public void insert(Person person) {
         personRepository.insert(person);
     }
-
 }
