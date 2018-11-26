@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:outputStylesheet library="css" name="materialize.css" />
     <h:outputStylesheet library="css" name="icons.css" />
@@ -21,33 +21,42 @@
         <div class="right">
             <div class="title">R E G I S T E R</div>
             <div class="desc"></div>
-            <p style="text-align: center; color: red;">#{registerController.getMessage()}</p>
+            <h:outputText value="#{registerController.getMessage()}" style="text-align: center; color: red;"/>
             <div class="form">
                 <h:form>
+                    <!--<h:messages style="text-align: center; color: red;"/>-->
                     <div class="input-field" >
                         <!--<i class="material-icons prefix">account_circle</i>-->
-                        <h:inputText id="firstName" styleClass="validate" binding="#{firstName}"/>
+                        <h:inputText id="firstName" styleClass="validate" binding="#{firstName}">
+                            <!--<f:validateRequired for="firstName" />-->
+                        </h:inputText>
                         <!--<input type="text" id="firstName" class="validate" />-->
                         <label for="firstName">First name</label>
                     </div>
                     <div class="input-field" >
                         <!--<i class="material-icons prefix">account_circle</i>-->
-                        <h:inputText id="lastName" styleClass="validate" binding="#{lastName}"/>
+                        <h:inputText id="lastName" styleClass="validate" binding="#{lastName}">
+                            <!--<f:validateRequired for="lastName" />-->
+                        </h:inputText>
                         <!--<input type="text" id="lastName" class="validate" />-->
                         <label for="lastName">Last name</label>
                     </div>
                     <div class="input-field" >
                         <!--<i class="material-icons prefix">email</i>-->
-                        <h:inputText id="username" styleClass="validate" binding="#{username}"/>
+                        <h:inputText id="username" styleClass="validate" binding="#{username}">
+                            <!--<f:validateRequired for="username" />-->
+                        </h:inputText>
                         <!--<input type="email" id="username" class="validate" />-->
                         <label for="username">E-mail</label>
                     </div>
                     <div class="input-field" >
                         <!--<i class="material-icons prefix">lock</i>-->
-                        <h:inputSecret id="password" styleClass="validate" binding="#{password}"/>
+                        <h:inputSecret id="password" styleClass="validate" binding="#{password}">
+                            <!--<f:validateRequired for="password" />-->
+                        </h:inputSecret>
                         <!--<input type="password" id="password" class="validate" />-->
                         <label for="password">Password</label>
-                        <h:commandLink value="S U B M I T" styleClass="button" action="#{registerController.register(firstName.value, lastName.value, username.value, password.value)}"/>
+                        <p:commandButton styleClass="button" value="Registreren" action="#{registerController.register(firstName.value, lastName.value, username.value, password.value)}" ajax="false"/>
                         <!--<input type="submit" value="S U B M I T" class="button" />-->
                     </div>
                 </h:form>
