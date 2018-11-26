@@ -19,13 +19,16 @@
     <div class="section-start">
         <div class="header">
 
-            <!-- Render op basis van logn -->
+            <!-- Render op basis van login -->
+
             <p:menubar>
                 <p:menuitem value="Reizen" outcome="/index.xhtml" icon="ui-icon-calendar" />
                 <f:facet name="options">
                     <h:outputText rendered="#{not empty name}" value="Hello #{name} " />
                     <h:panelGroup rendered="#{not empty name}">
-                        <p:commandButton value="Uitloggen" action="#{loginController.uitloggen}" icon="ui-icon-close" />
+                        <h:form>
+                        <h:commandLink action="#{loginController.logout()}" value="Logout" />
+                        </h:form>
                     </h:panelGroup>
                     <h:panelGroup rendered="#{empty name}">
                         <p:button type="button" value="Inloggen" outcome="login.xhtml" icon="ui-icon-person" />

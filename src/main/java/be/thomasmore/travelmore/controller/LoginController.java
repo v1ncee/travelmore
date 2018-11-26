@@ -17,7 +17,6 @@ import java.io.IOException;
 public class LoginController {
 
 
-
     @Inject
     private PersonService personService;
 
@@ -46,11 +45,12 @@ public class LoginController {
         return "login";
     }
 
-    public void uitloggen() throws IOException {
-        HttpSession session = SessionUtilities.getSession();
-        session.invalidate();
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    public String logout()
+    {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession httpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
+        httpSession.invalidate();
+        return "logout";
     }
 
 
