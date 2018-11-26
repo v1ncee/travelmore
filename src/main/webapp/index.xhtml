@@ -100,8 +100,10 @@
             if ((wS >= wH) && iEn === 1) {
                 iEn = 0;
                 $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+                $(".login-buttons a").css("color:","black");
             }else if((wS <= wH) && iEn === 0){
                 $(".logo").css("background-image",'url("./resources/images/logo.png")');
+                $(".login-buttons a").css("color:","white");
                 iEn = 1;
             }
         });
@@ -170,9 +172,6 @@
         <p:column headerText="TriptLocation">
             <h:outputText value="#{booking.trip.location.name}" />
         </p:column>
-
-
-
     </p:dataTable>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">

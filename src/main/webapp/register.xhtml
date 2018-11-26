@@ -47,7 +47,7 @@
                         <h:inputSecret id="password" styleClass="validate" binding="#{password}"/>
                         <!--<input type="password" id="password" class="validate" />-->
                         <label for="password">Password</label>
-                        <h:commandLink value="S U B M I T" styleClass="button" action="#{registerController.register(firstName.value, lastName.value, username.value, password.value)}"/>
+                        <h:commandButton value="S U B M I T" styleClass="button" action="#{registerController.register(firstName.value, lastName.value, username.value, password.value)}"/>
                         <!--<input type="submit" value="S U B M I T" class="button" />-->
                     </div>
                 </h:form>
