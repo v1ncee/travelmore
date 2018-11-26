@@ -30,4 +30,8 @@ public class BookingService {
         bookingRepository.insert(booking);
     }
 
+    public void  setPayed(Booking booking){
+        bookingRepository.setPayed(booking);
+    }
+
 }

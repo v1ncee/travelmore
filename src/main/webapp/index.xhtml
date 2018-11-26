@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <h:outputStylesheet library="css" name="materialize.css" />
     <h:outputStylesheet library="css" name="style.css" />
@@ -17,6 +18,27 @@
     </div>
     <div class="section-start">
         <div class="header">
+
+            <!-- Render op basis van login -->
+
+            <p:menubar>
+                <p:menuitem value="Reizen" outcome="/index.xhtml" icon="ui-icon-calendar" />
+                <f:facet name="options">
+                    <h:outputText rendered="#{not empty name}" value="Hello #{name} " />
+                    <h:panelGroup rendered="#{not empty name}">
+                        <h:form>
+                        <h:commandLink action="#{loginController.logout()}" value="Logout" />
+                        </h:form>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{empty name}">
+                        <p:button type="button" value="Inloggen" outcome="login.xhtml" icon="ui-icon-person" />
+                        <p:button type="button" value="Registreren" outcome="register.xhtml" icon="ui-icon-circle-plus" />
+                    </h:panelGroup>
+                </f:facet>
+            </p:menubar>
+
+            <!--////////////////////////////////////-->
+
             <div class="logo"></div>
             <div class="login-buttons">
                 <a href="login.xhtml">Login</a>
@@ -94,8 +116,22 @@
             $('.materialboxed').materialbox();
         var iEn = 1;
         $(window).on('scroll', function() {
-
-<<<<<<< HEAD
+            var hH = $('.logo').outerHeight(),
+                    wH = $(window).height() - hH,
+                    wS = $(this).scrollTop();
+            if ((wS >= wH) && iEn === 1) {
+                iEn = 0;
+                $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+                $(".login-buttons a").css("color:","black");
+            }else if((wS <= wH) && iEn === 0){
+                $(".logo").css("background-image",'url("./resources/images/logo.png")');
+                $(".login-buttons a").css("color:","white");
+                iEn = 1;
+            }
+        });
+        });
+        //]]>
+    </h:outputScript>
 
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
@@ -158,9 +194,6 @@
         <p:column headerText="TriptLocation">
             <h:outputText value="#{booking.trip.location.name}" />
         </p:column>
-
-
-
     </p:dataTable>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
@@ -179,22 +212,7 @@
             </h:panelGrid>
         </p:panel>
     </h:form>
-=======
-        var hH = $('.logo').outerHeight(),
-        wH = $(window).height() - hH,
-        wS = $(this).scrollTop();
-        if ((wS >= wH) && iEn === 1) {
-        iEn = 0;
-        $(".logo").css("background-image",'url("./resources/images/logo2.png")');
-        }else if((wS <= wH) && iEn === 0){
-        $(".logo").css("background-image",'url("./resources/images/logo.png")');
-        iEn = 1;
-        }
-        });
-        });
-        //]]>
-    </h:outputScript>
->>>>>>> 6f2c1b8ff291c3618ad4a2c123105be7cec3fde1
+
 </h:body>
 </html>
 

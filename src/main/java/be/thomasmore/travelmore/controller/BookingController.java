@@ -43,14 +43,10 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public String submit(String note, int persons){
-
-
-
-
-
+    public String submit(String note, int persons, Person person, Trip trip){
         payed = true;
 
+        /*
         location.setName("Schiphol");
         location.setCode("ams");
 
@@ -68,6 +64,7 @@ public class BookingController {
         trip.setPlaces(5);
         trip.setDepartlocation(location);
         trip.setLocation(location);
+        */
 
         newBooking.setNote(note);
         newBooking.setPersons(persons);
@@ -77,6 +74,15 @@ public class BookingController {
         this.bookingService.insert(newBooking);
 
         return "index";
+    }
+
+    public void setPayed(){
+        //hier moet de huidige booking inkomen
+        Booking b = new Booking();
+        b.setId(3);
+        b.setPayed(true);
+
+        this.bookingService.setPayed(b);
     }
 
 }

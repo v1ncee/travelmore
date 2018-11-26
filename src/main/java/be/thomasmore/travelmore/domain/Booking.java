@@ -15,6 +15,10 @@ import javax.validation.constraints.Size;
                 @NamedQuery(
                         name = Booking.FIND_ALL,
                         query = "SELECT b FROM Booking b"
+                ),
+                @NamedQuery(
+                        name = Booking.SETPAYED_BY_ID,
+                        query = "UPDATE Booking b SET b.payed = :payed WHERE b.id = :id"
                 )
         }
 )
@@ -26,6 +30,7 @@ public class Booking {
 
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findByID";
+    public static final String SETPAYED_BY_ID = "Booking.setPayedByID";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
