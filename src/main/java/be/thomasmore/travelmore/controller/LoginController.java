@@ -64,7 +64,7 @@ public class LoginController {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession httpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
         httpSession.invalidate();
-        return "logout";
+        return "logout.xhtml";
     }
 
     public void log() {
