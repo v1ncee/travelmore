@@ -51,13 +51,20 @@
             <div class="filter-tab">
                 <h:form>
                     <div class="input-field">
-                        <!--<h:selectOneMenu var="locations" value="#{locationController.getLocations()}">-->
-                            <!--&lt;!&ndash;<f:selectItems value="#{locations.Name}" />&ndash;&gt;-->
-                            <!--<f:selectItem value="test" />-->
-                        <!--</h:selectOneMenu>-->
-                        <!--<h:inputText id="departCity" styleClass="validate" binding="#{departCity}"/>-->
-                        <!--<label class="active" for="departCity">Depart city</label>-->
+                        <h:selectOneMenu binding="#{departLocation}" id="departlocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="departlocation">Departlocation</label>
                     </div>
+                    <div class="input-field">
+                        <h:selectOneMenu binding="#{arrivalLocation}" id="arrivallocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="arrivallocation">Arrivallocation</label>
+                    </div>
+
                     <div class="input-field">
                         <h:inputText id="city" styleClass="validate" binding="#{city}"/>
                         <label class="active" for="city">City</label>
@@ -83,8 +90,9 @@
                         <label for="end-date">End Date</label>
                     </div>
                     <h:commandButton styleClass="button-filter" value="filter"
-                                     action="#{tripController.filterTable(departCity.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
+                                     action="#{tripController.filterTable(departLocation.value, arrivalLocation.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
                                      ajax="false"/>
+
                 </h:form>
             </div>
             <div class="table">
@@ -108,7 +116,10 @@
                         <h:outputText value="#{trip.transport}"/>
                     </p:column>
                     <p:column headerText="Depart location">
-                        <h:outputText value="#{trip.departlocation}"/>
+                        <h:outputText value="#{trip.departlocation.name}"/>
+                    </p:column>
+                    <p:column headerText="Arrival location">
+                        <h:outputText value="#{trip.arrivallocation.name}"/>
                     </p:column>
                     <p:column headerText="Start Date">
                         <h:outputText value="#{trip.startDate}"/>
@@ -123,6 +134,7 @@
                     </p:column>
                 </p:dataTable>
             </div>
+
         </div>
     </div>
     <h:outputScript library="js" name="jquery.js" target="head"/>
@@ -136,7 +148,7 @@
                         format: 'yyyy-mm-dd'
                     }
             );
-
+            $('select').formSelect();
             $('#hamburger').click(function () {
                 $(this).toggleClass('open');
                 $('.side-nav').toggleClass('open');

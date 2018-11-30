@@ -44,15 +44,18 @@ public class TripController {
         return trips;
     }
 
-    public void filterTable(String departCity, String city, String price, String people, String transport, String startDate, String endDate) {
-        if (city.equals("") && departCity.equals("") && price.equals("") && people.equals("") && transport.equals("") && startDate.equals("") && endDate.equals("")) {
+    public void filterTable(String departLocation, String arrivalLocation, String city, String price, String people, String transport, String startDate, String endDate) {
+        if (city.equals("") && departLocation.equals("") && arrivalLocation.equals("")&& price.equals("") && people.equals("") && transport.equals("") && startDate.equals("") && endDate.equals("")) {
             this.getAllTrips();
         }
         if (!city.equals("")) {
-            this.getTripsWithLocationName(city);
+            this.getTripsCity(city);
         }
-        if (!departCity.equals("")) {
-            this.getTripsWithDepartLocationName(departCity);
+        if (!departLocation.equals("")) {
+            this.getTripsWithDepartLocationName(departLocation);
+        }
+        if (!arrivalLocation.equals("")) {
+            this.getTripsWithArrivalLocationName(arrivalLocation);
         }
         if (!price.equals("")) {
             double priceDouble;
@@ -127,6 +130,15 @@ public class TripController {
         return trip;
     }
 
+    public List<Trip> getTripsCity(String city){
+        trips = this.tripService.findAllTripsCity(city);
+        return trips;
+    }
+
+    public List<Trip> getTripsWithArrivalLocationName(String name){
+        trips = this.tripService.findAllTripsWithArrivalLocationName(name);
+        return trips;
+    }
 
     public void submit(){
         this.tripService.insert(newTrip);
