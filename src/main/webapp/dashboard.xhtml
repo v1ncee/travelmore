@@ -131,7 +131,11 @@
         $ = jQuery;
         //<![CDATA[
         $(document).ready(function () {
-            $('.datepicker').datepicker();
+            $('.datepicker').datepicker(
+                    {
+                        format: 'yyyy-mm-dd'
+                    }
+            );
 
             $('#hamburger').click(function () {
                 $(this).toggleClass('open');
