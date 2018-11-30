@@ -56,6 +56,9 @@ html{
     font-size:18px;
     z-index:3;
 }
+.welcome{
+    color: #ffffff !important;
+}
 .logo{
     position: relative;
     margin-top:1%;
