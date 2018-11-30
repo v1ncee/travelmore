@@ -61,6 +61,20 @@ public class TripRepository {
         return null;
     }
 
+    public List<Trip> findByCity(String city) {
+        if(city != "" && city != null){
+            return entityManager.createNamedQuery(Trip.FIND_ALL_CITY, Trip.class).setParameter("city", city + "%").getResultList();
+        }
+        return null;
+    }
+
+    public List<Trip> findByArrivalLocationName(String name) {
+        if(name != "" && name != null){
+            return entityManager.createNamedQuery(Trip.FIND_ALL_ARRIVALLOCATION, Trip.class).setParameter("name", name + "%").getResultList();
+        }
+        return null;
+    }
+
     public void insert(Trip trip) {
         entityManager.persist(trip);
     }

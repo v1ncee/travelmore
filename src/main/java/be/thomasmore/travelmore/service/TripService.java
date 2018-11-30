@@ -50,6 +50,15 @@ public class TripService {
         trip.setTitle(newName);
     }
 
+    public List<Trip> findAllTripsCity(String city) {
+        return tripRepository.findByCity(city);
+    }
+
+    public List<Trip> findAllTripsWithArrivalLocationName(String name) {
+        return tripRepository.findByArrivalLocationName(name);
+    }
+
+
     public void insert(Trip trip) {
         tripRepository.insert(trip);
     }

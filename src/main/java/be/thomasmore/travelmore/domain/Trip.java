@@ -14,33 +14,35 @@ import java.util.Date;
         ),
             @NamedQuery(
             name = Trip.FIND_ALL_LOCATION_NAME,
-            query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where l.name LIKE :name"
+            query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where l.name LIKE :name"
             ),
             @NamedQuery(
                     name = Trip.FIND_ALL_FREE_PLACES,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.places >= :number"
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.places >= :number"
             ),
             @NamedQuery(
                     name = Trip.FIND_ALL_PRICE,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.price <= :price"
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.price <= :price"
             ),
             @NamedQuery(
                     name = Trip.FIND_ALL_TRANSPORT,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.transport LIKE :transport"
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.transport LIKE :transport"
             ),
             @NamedQuery(
                     name = Trip.FIND_ALL_PERIOD,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.location.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
+                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
             ),
-
-//            @NamedQuery(
-  //                  name = Trip.FIND_ALL_DEPARTLOCATION,
-    //                query = "SELECT t FROM Trip t INNER JOIN departlocation dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
-      //      )
-
             @NamedQuery(
                     name = Trip.FIND_ALL_DEPARTLOCATION,
                     query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_CITY,
+                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where t.city >= :city"
+            ),
+            @NamedQuery(
+                    name = Trip.FIND_ALL_ARRIVALLOCATION,
+                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where dl.name LIKE :name"
             )
 
     }
@@ -55,6 +57,8 @@ public class Trip {
     public static final String FIND_ALL_TRANSPORT = "Trip.findAllTransport";
     public static final String FIND_ALL_PERIOD = "Trip.findAllBetweenPeriod";
     public static final String FIND_ALL_DEPARTLOCATION = "Trip.findAllDepartlocation";
+    public static final String FIND_ALL_ARRIVALLOCATION = "Trip.findAllArrivallocation";
+    public static final String FIND_ALL_CITY = "Trip.findAllCity";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,8 +85,8 @@ public class Trip {
 
 
     @OneToOne
-    @JoinColumn(name = "LocationID")
-    private Location location;
+    @JoinColumn(name = "ArrivalLocationID")
+    private Location arrivallocation;
 
     @OneToOne
     @JoinColumn(name = "DepartLocationID")
@@ -160,14 +164,13 @@ public class Trip {
         this.city = city;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getArrivallocation() {
+        return arrivallocation;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setArrivallocation(Location arrivallocation) {
+        this.arrivallocation = arrivallocation;
     }
-
 
     public Location getDepartlocation() {
         return departlocation;
