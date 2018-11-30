@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="materialize.css"/>
+    <h:outputStylesheet library="css" name="dashboard.css"/>
+    <h:outputStylesheet library="css" name="icons.css"/>
+    <h:outputStylesheet library="css" name="norm.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <title>Travel More!</title>
+</h:head>
+<h:body>
+    <div id="hamburger" class="">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="nav-bar">
+        <div class="title"></div>
+        <div class="profile">Welcome, Kim Jong Un</div>
+    </div>
+    <div class="side-nav">
+        <div class="title-wrapper">
+            <div class="title"></div>
+        </div>
+
+        <ul>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">home</i></div>
+                <li>Homepage</li>
+            </div>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">book</i></div>
+                <li>Book</li>
+            </div>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">lock_open</i></div>
+                <li>Logout</li>
+            </div>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="title-page">Booking:</div>
+        <div class="box">
+            <h:form>
+                <div class="input-field">
+                    <h:inputText id="persons" binding="#{persons}" required="true" label="Persons" />
+                    <label for="persons">Persons</label>
+                </div>
+                <div class="input-field">
+                    <h:inputText id="note" binding="#{note}" required="true" label="Extra" />
+                    <label for="note">Extra</label>
+                </div>
+                <h:commandButton styleClass="button" value="Book trip" action="#{bookingController.submit(note.value, persons.value)}" ajax="false"/>
+            </h:form>
+        </div>
+    </div>
+    <h:outputScript library="js" name="jquery.js" target="head"/>
+    <h:outputScript library="js" name="materialize.js" target="head"/>
+    <h:outputScript target="head">
+        $ = jQuery;
+        //<![CDATA[
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+
+            $('#hamburger').click(function () {
+                $(this).toggleClass('open');
+                $('.side-nav').toggleClass('open');
+            });
+        });
+        //]]>
+    </h:outputScript>
+</h:body>
+</html>
+

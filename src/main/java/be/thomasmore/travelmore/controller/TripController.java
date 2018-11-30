@@ -1,7 +1,9 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Location;
 import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.TripService;
+import be.thomasmore.travelmore.service.LocationService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,10 +21,11 @@ public class TripController {
 
     private Trip newTrip = new Trip();
     private List<Trip> trips;
-//    private List<>
+    private List<Location> locations;
 
     @Inject
     private TripService tripService;
+    private LocationService locationService;
 
     public Trip getNewTrips() {
         return newTrip;

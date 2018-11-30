@@ -96,20 +96,6 @@
                 </h:form>
             </div>
             <div class="table">
-                <table class="striped">
-                    <tr>
-                        <th>Title:</th>
-                        <th>Country:</th>
-                        <th>City:</th>
-                        <th>Price:</th>
-                        <th>Max.People:</th>
-                        <th>Transport:</th>
-                        <th>Start Date:</th>
-                        <th>End Date:</th>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
                 <p:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
                     <p:column headerText="Title">
                         <h:outputText value="#{trip.title}"/>
@@ -140,6 +126,11 @@
                     </p:column>
                     <p:column headerText="End Date">
                         <h:outputText value="#{trip.endDate}"/>
+                    </p:column>
+                    <p:column headerText="Book">
+                        <h:form>
+                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id, loginController.getId())}"/>
+                        </h:form>
                     </p:column>
                 </p:dataTable>
             </div>
