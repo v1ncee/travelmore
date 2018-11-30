@@ -13,6 +13,12 @@
         <param-value>true</param-value>
     </context-param>
 
+    <!--For h:panelgroup rendered-->
+    <context-param>
+        <param-name>com.sun.faces.allowTextChildren</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <context-param>
         <param-name>resteasy.servlet.mapping.prefix</param-name>
         <param-value>/rest</param-value>

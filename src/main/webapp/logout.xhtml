@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE html
-            PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Ge zijt uitgelogd</title>
-</head>
-<body>
-    <h1></h1>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="materialize.css" />
+    <h:outputStylesheet library="css" name="icons.css" />
+    <h:outputStylesheet library="css" name="login.css" />
+    <h:outputStylesheet library="css" name="norm.css" />
+    <title>Travel More!</title>
+</h:head>
+<h:body>
+    <div class="con"></div>
+    <div class="login-box">
+        <div class="left">
+            <div class="logo"></div>
+        </div>
+        <div class="right">
+            <div class="title">L O G O U T</div>
+            <div class="desc">
+                <p>We update our trips everyday .</p>
+                <p> Be sure to visit again!</p>
+            </div>
+        </div>
+    </div>
+    <h:outputScript library="js" name="jquery.js" target="head"/>
+    <h:outputScript library="js" name="materialize.js" target="head" />
+</h:body>
 </html>
+
