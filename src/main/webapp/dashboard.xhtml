@@ -7,10 +7,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:pe="http://primefaces.org/ui/extensions">
 <h:head>
-    <h:outputStylesheet library="css" name="materialize.css" />
-    <h:outputStylesheet library="css" name="dashboard.css" />
-    <h:outputStylesheet library="css" name="icons.css" />
-    <h:outputStylesheet library="css" name="norm.css" />
+    <h:outputStylesheet library="css" name="materialize.css"/>
+    <h:outputStylesheet library="css" name="dashboard.css"/>
+    <h:outputStylesheet library="css" name="icons.css"/>
+    <h:outputStylesheet library="css" name="norm.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
     <title>Travel More!</title>
 </h:head>
 <h:body>
@@ -30,9 +31,18 @@
         </div>
 
         <ul>
-            <div class="link-wrapper"><div class="cover"><i class="material-icons">home</i></div><li>Homepage</li></div>
-            <div class="link-wrapper"><div class="cover"><i class="material-icons">book</i></div><li>Book</li></div>
-            <div class="link-wrapper"><div class="cover"><i class="material-icons">lock_open</i></div><li>Logout</li></div>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">home</i></div>
+                <li>Homepage</li>
+            </div>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">book</i></div>
+                <li>Book</li>
+            </div>
+            <div class="link-wrapper">
+                <div class="cover"><i class="material-icons">lock_open</i></div>
+                <li>Logout</li>
+            </div>
         </ul>
     </div>
     <div class="content">
@@ -41,37 +51,36 @@
             <div class="filter-tab">
                 <h:form>
                     <div class="input-field">
-                        <h:inputText  id="title" styleClass="validate" />
-                        <label class="active" for="title">Title</label>
+                        <h:inputText id="departCity" styleClass="validate" binding="#{departCity}"/>
+                        <label class="active" for="departCity">Depart city</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText  id="country"  styleClass="validate" />
-                        <label class="active" for="country">Country</label>
-                    </div>
-                    <div class="input-field">
-                        <h:inputText  id="city" styleClass="validate" />
+                        <h:inputText id="city" styleClass="validate" binding="#{city}"/>
                         <label class="active" for="city">City</label>
                     </div>
                     <div class="input-field num">
-                        <h:inputText id="price"  styleClass="validate" />
+                        <h:inputText id="price" styleClass="validate" binding="#{price}"/>
                         <label class="active" for="price">Price</label>
                     </div>
                     <div class="input-field num">
-                        <h:inputText id="places" styleClass="validate" />
-                        <label class="active" for="places">Max. People</label>
+                        <h:inputText id="people" styleClass="validate" binding="#{people}"/>
+                        <label class="active" for="people">Max. People</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText id="transport" styleClass="validate" />
+                        <h:inputText id="transport" styleClass="validate" binding="#{transport}"/>
                         <label class="active" for="transport">Transport</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText id="start-date"  styleClass="validate datepicker" />
+                        <h:inputText id="start-date" styleClass="validate datepicker" binding="#{startDate}"/>
                         <label for="start-date">Start Date</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText id="end-date" styleclass="validate datepicker" />
-                        <label  for="end-date">End Date</label>
+                        <h:inputText id="end-date" styleclass="validate datepicker" binding="#{endDate}"/>
+                        <label for="end-date">End Date</label>
                     </div>
+                    <h:commandButton styleClass="button-filter" value="filter"
+                                     action="#{tripController.filterTable(departCity.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
+                                     ajax="false"/>
                 </h:form>
             </div>
             <div class="table">
@@ -88,20 +97,48 @@
                     </tr>
                     <tr>
                     </tr>
-                    <tr></tr>
                 </table>
+                <p:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
+                    <p:column headerText="Title">
+                        <h:outputText value="#{trip.title}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{trip.price}"/>
+                    </p:column>
+                    <p:column headerText="Country">
+                        <h:outputText value="#{trip.country}"/>
+                    </p:column>
+                    <p:column headerText="City">
+                        <h:outputText value="#{trip.city}"/>
+                    </p:column>
+                    <p:column headerText="Max.People">
+                        <h:outputText value="#{trip.places}"/>
+                    </p:column>
+                    <p:column headerText="Transport">
+                        <h:outputText value="#{trip.transport}"/>
+                    </p:column>
+                    <p:column headerText="Depart location">
+                        <h:outputText value="#{trip.departlocation}"/>
+                    </p:column>
+                    <p:column headerText="Start Date">
+                        <h:outputText value="#{trip.startDate}"/>
+                    </p:column>
+                    <p:column headerText="End Date">
+                        <h:outputText value="#{trip.endDate}"/>
+                    </p:column>
+                </p:dataTable>
             </div>
         </div>
     </div>
     <h:outputScript library="js" name="jquery.js" target="head"/>
-    <h:outputScript library="js" name="materialize.js" target="head" />
+    <h:outputScript library="js" name="materialize.js" target="head"/>
     <h:outputScript target="head">
         $ = jQuery;
         //<![CDATA[
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.datepicker').datepicker();
 
-            $('#hamburger').click(function(){
+            $('#hamburger').click(function () {
                 $(this).toggleClass('open');
                 $('.side-nav').toggleClass('open');
             });
