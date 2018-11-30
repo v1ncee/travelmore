@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions">
+      xmlns:pe="http://primefaces.org/ui/extensions" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:outputStylesheet library="css" name="materialize.css"/>
     <h:outputStylesheet library="css" name="dashboard.css"/>
@@ -51,8 +51,12 @@
             <div class="filter-tab">
                 <h:form>
                     <div class="input-field">
-                        <h:inputText id="departCity" styleClass="validate" binding="#{departCity}"/>
-                        <label class="active" for="departCity">Depart city</label>
+                        <!--<h:selectOneMenu var="locations" value="#{locationController.getLocations()}">-->
+                            <!--&lt;!&ndash;<f:selectItems value="#{locations.Name}" />&ndash;&gt;-->
+                            <!--<f:selectItem value="test" />-->
+                        <!--</h:selectOneMenu>-->
+                        <!--<h:inputText id="departCity" styleClass="validate" binding="#{departCity}"/>-->
+                        <!--<label class="active" for="departCity">Depart city</label>-->
                     </div>
                     <div class="input-field">
                         <h:inputText id="city" styleClass="validate" binding="#{city}"/>
@@ -84,20 +88,6 @@
                 </h:form>
             </div>
             <div class="table">
-                <table class="striped">
-                    <tr>
-                        <th>Title:</th>
-                        <th>Country:</th>
-                        <th>City:</th>
-                        <th>Price:</th>
-                        <th>Max.People:</th>
-                        <th>Transport:</th>
-                        <th>Start Date:</th>
-                        <th>End Date:</th>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
                 <p:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
                     <p:column headerText="Title">
                         <h:outputText value="#{trip.title}"/>
@@ -125,6 +115,11 @@
                     </p:column>
                     <p:column headerText="End Date">
                         <h:outputText value="#{trip.endDate}"/>
+                    </p:column>
+                    <p:column headerText="Book">
+                        <h:form>
+                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id, loginController.getId())}"/>
+                        </h:form>
                     </p:column>
                 </p:dataTable>
             </div>

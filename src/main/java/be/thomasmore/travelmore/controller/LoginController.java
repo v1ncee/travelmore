@@ -21,6 +21,15 @@ import java.util.Enumeration;
 public class LoginController {
 
     private String name;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -71,9 +80,7 @@ public class LoginController {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
         setName(session.getAttribute("name").toString());
+        setId(Integer.parseInt(session.getAttribute("id").toString()));
+
     }
-
-
-
-
 }

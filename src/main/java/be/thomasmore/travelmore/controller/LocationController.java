@@ -4,12 +4,13 @@ import be.thomasmore.travelmore.domain.Location;
 import be.thomasmore.travelmore.service.LocationService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class LocationController {
 
     private Location newLocation = new Location();
