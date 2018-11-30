@@ -7,6 +7,7 @@ import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.BookingService;
 import be.thomasmore.travelmore.service.PersonService;
 import be.thomasmore.travelmore.service.TripService;
+import be.thomasmore.travelmore.controller.TripController;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,6 +30,7 @@ public class BookingController {
     @Inject
     private BookingService bookingService;
     private LoginController loginController;
+    private TripController tripController;
     private PersonService personService;
     private TripService tripService;
 
@@ -36,6 +38,7 @@ public class BookingController {
     private Trip trip = new Trip();
     private Location location = new Location();
     private Boolean payed;
+    private int personId = 6;
 
 
     public Booking getNewBooking() {
@@ -58,13 +61,11 @@ public class BookingController {
         this.tripService = tripService;
     }
 
-    public String bookTrip(int tripID, int id) {
-//        FacesContext facesContext = FacesContext.getCurrentInstance();
-//        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+    public String bookTrip(int tripID) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 
-        int personId = id;
-
-        Trip trip = this.tripService.findTripById(tripID);
+        Trip trip = tripController.getTripId(tripID);
         Person person = this.personService.findPersonById(personId);
 
 

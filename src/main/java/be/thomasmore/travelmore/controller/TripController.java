@@ -122,6 +122,11 @@ public class TripController {
         return trips;
     }
 
+    public Trip getTripId(int id){
+        Trip trip = this.tripService.findTripById(id);
+        return trip;
+    }
+
 
     public void submit(){
         this.tripService.insert(newTrip);
