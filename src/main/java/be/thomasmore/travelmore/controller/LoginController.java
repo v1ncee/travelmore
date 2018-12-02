@@ -5,6 +5,7 @@ import be.thomasmore.travelmore.service.PersonService;
 import be.thomasmore.travelmore.domain.Person;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class LoginController {
 
     private String name;
