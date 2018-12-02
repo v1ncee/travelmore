@@ -6,10 +6,15 @@ import be.thomasmore.travelmore.domain.Person;
 import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.BookingService;
 import be.thomasmore.travelmore.service.PersonService;
+import be.thomasmore.travelmore.service.TripService;
+import be.thomasmore.travelmore.controller.TripController;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import javax.faces.context.FacesContext;
 import java.awt.print.Book;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,17 +23,22 @@ import java.util.List;
 import java.util.SimpleTimeZone;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class BookingController {
 
     private Booking newBooking = new Booking();
     @Inject
     private BookingService bookingService;
+    private LoginController loginController;
+    private TripController tripController;
+    private PersonService personService;
+    private TripService tripService;
 
     private Person person = new Person();
     private Trip trip = new Trip();
     private Location location = new Location();
     private Boolean payed;
+    private int personId = 6;
 
 
     public Booking getNewBooking() {
@@ -43,7 +53,29 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public String submit(String note, int persons, Person person, Trip trip){
+    public void setPersonService(PersonService personService){
+        this.personService = personService;
+    }
+
+    public void setTripService(TripService tripService){
+        this.tripService = tripService;
+    }
+
+    public String bookTrip(int tripID) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+
+        Trip trip = tripController.getTripId(tripID);
+        Person person = this.personService.findPersonById(personId);
+
+
+        newBooking.setPerson(person);
+        newBooking.setTrip(trip);
+
+        return "booking";
+    }
+
+    public String submit(String note, int persons){
         payed = true;
 
         /*
@@ -69,11 +101,11 @@ public class BookingController {
         newBooking.setNote(note);
         newBooking.setPersons(persons);
         newBooking.setPayed(payed);
-        newBooking.setPerson(person);
-        newBooking.setTrip(trip);
+//        newBooking.setPerson(person);
+//        newBooking.setTrip(trip);
         this.bookingService.insert(newBooking);
 
-        return "index";
+        return "dashboard";
     }
 
     public void setPayed(){

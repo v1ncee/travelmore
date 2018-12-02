@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions">
+      xmlns:pe="http://primefaces.org/ui/extensions" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:outputStylesheet library="css" name="materialize.css"/>
     <h:outputStylesheet library="css" name="dashboard.css"/>
@@ -51,9 +51,20 @@
             <div class="filter-tab">
                 <h:form>
                     <div class="input-field">
-                        <h:inputText id="departCity" styleClass="validate" binding="#{departCity}"/>
-                        <label class="active" for="departCity">Depart city</label>
+                        <h:selectOneMenu binding="#{departLocation}" id="departlocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="departlocation">Departlocation</label>
                     </div>
+                    <div class="input-field">
+                        <h:selectOneMenu binding="#{arrivalLocation}" id="arrivallocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="arrivallocation">Arrivallocation</label>
+                    </div>
+
                     <div class="input-field">
                         <h:inputText id="city" styleClass="validate" binding="#{city}"/>
                         <label class="active" for="city">City</label>
@@ -79,25 +90,12 @@
                         <label for="end-date">End Date</label>
                     </div>
                     <h:commandButton styleClass="button-filter" value="filter"
-                                     action="#{tripController.filterTable(departCity.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
+                                     action="#{tripController.filterTable(departLocation.value, arrivalLocation.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
                                      ajax="false"/>
+
                 </h:form>
             </div>
             <div class="table">
-                <table class="striped">
-                    <tr>
-                        <th>Title:</th>
-                        <th>Country:</th>
-                        <th>City:</th>
-                        <th>Price:</th>
-                        <th>Max.People:</th>
-                        <th>Transport:</th>
-                        <th>Start Date:</th>
-                        <th>End Date:</th>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
                 <p:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
                     <p:column headerText="Title">
                         <h:outputText value="#{trip.title}"/>
@@ -118,7 +116,10 @@
                         <h:outputText value="#{trip.transport}"/>
                     </p:column>
                     <p:column headerText="Depart location">
-                        <h:outputText value="#{trip.departlocation}"/>
+                        <h:outputText value="#{trip.departlocation.name}"/>
+                    </p:column>
+                    <p:column headerText="Arrival location">
+                        <h:outputText value="#{trip.arrivallocation.name}"/>
                     </p:column>
                     <p:column headerText="Start Date">
                         <h:outputText value="#{trip.startDate}"/>
@@ -126,8 +127,14 @@
                     <p:column headerText="End Date">
                         <h:outputText value="#{trip.endDate}"/>
                     </p:column>
+                    <p:column headerText="Book">
+                        <h:form>
+                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id)}"/>
+                        </h:form>
+                    </p:column>
                 </p:dataTable>
             </div>
+
         </div>
     </div>
     <h:outputScript library="js" name="jquery.js" target="head"/>
@@ -136,8 +143,12 @@
         $ = jQuery;
         //<![CDATA[
         $(document).ready(function () {
-            $('.datepicker').datepicker();
-
+            $('.datepicker').datepicker(
+                    {
+                        format: 'yyyy-mm-dd'
+                    }
+            );
+            $('select').formSelect();
             $('#hamburger').click(function () {
                 $(this).toggleClass('open');
                 $('.side-nav').toggleClass('open');
