@@ -67,12 +67,12 @@ public class LoginController {
         return "login";
     }
 
-    public void logout() throws IOException
+    public String logout()
     {
-        HttpSession httpSession = SessionUtilities.getSession();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession httpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
         httpSession.invalidate();
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+        return "logout.xhtml";
     }
 
     public void log() {

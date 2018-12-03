@@ -22,11 +22,16 @@
             <div class="logo"></div>
             <div class="login-buttons">
                 <div class="welcome">
-                    <h:outputText rendered="#{not empty name}" value="Welcome, #{name}" />
-                    <h:outputLink rendered="#{not empty name}" value="#{loginController.logout()}">Logout</h:outputLink>
-                    <h:outputLink rendered="#{empty name}" value="login.xhtml">login</h:outputLink>
-                    //
-                    <h:outputLink rendered="#{empty name}" value="register.xhtml">register</h:outputLink>
+                    <h:panelGroup rendered="#{not empty name}">
+                        Welcome, #{loginController.getName()} //
+                        <h:outputLink value="#{loginController.logout()}">logout</h:outputLink>
+                    </h:panelGroup>
+
+                    <h:panelGroup rendered="#{empty name}">
+                        <h:outputLink value="login.xhtml">login</h:outputLink>
+                        //
+                        <h:outputLink value="register.xhtml">register</h:outputLink>
+                    </h:panelGroup>
                 </div>
             </div>
         </div>
@@ -98,24 +103,23 @@
         //<![CDATA[
         $(document).ready(function(){
             $('.materialboxed').materialbox();
-        var iEn = 1;
-        $(window).on('scroll', function() {
-            var hH = $('.logo').outerHeight(),
-                    wH = $(window).height() - hH,
-                    wS = $(this).scrollTop();
-            if ((wS >= wH) && iEn === 1) {
-                iEn = 0;
-                $(".logo").css("background-image",'url("./resources/images/logo2.png")');
-                $(".login-buttons a").css("color:","black");
-            }else if((wS <= wH) && iEn === 0){
-                $(".logo").css("background-image",'url("./resources/images/logo.png")');
-                $(".login-buttons a").css("color:","white");
-                iEn = 1;
-            }
-        });
+            var iEn = 1;
+            $(window).on('scroll', function() {
+                var hH = $('.logo').outerHeight(),
+                        wH = $(window).height() - hH,
+                        wS = $(this).scrollTop();
+                if ((wS >= wH) && iEn === 1) {
+                    iEn = 0;
+                    $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+                    $(".login-buttons a").css("color:","black");
+                }else if((wS <= wH) && iEn === 0){
+                    $(".logo").css("background-image",'url("./resources/images/logo.png")');
+                    $(".login-buttons a").css("color:","white");
+                    iEn = 1;
+                }
+            });
         });
         //]]>
     </h:outputScript>
 </h:body>
 </html>
-
