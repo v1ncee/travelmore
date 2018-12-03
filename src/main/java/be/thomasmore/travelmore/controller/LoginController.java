@@ -68,7 +68,7 @@ public class LoginController {
 
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "login";
+        return "login.xhtml";
     }
 
     public boolean isLoggedIn(){

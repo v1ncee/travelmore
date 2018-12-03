@@ -26,9 +26,8 @@
                         Welcome, #{loginController.getName()} //
                         <h:outputLink value="#{loginController.logout()}">Logout</h:outputLink>
                         //
-                        <h:outputLink value="dashboard.xhtml">Dashboard</h:outputLink>
                     </h:panelGroup>
-
+                    <h:outputLink value="dashboard.xhtml">Dashboard</h:outputLink>
                     <h:panelGroup rendered="#{empty name}">
                         <h:outputLink value="login.xhtml">Login</h:outputLink>
                         //

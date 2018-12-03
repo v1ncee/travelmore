@@ -31,17 +31,30 @@
         </div>
 
         <ul>
-            <div class="link-wrapper">
+            <div class="link-wrapper"><h:outputLink value="index.xhtml">
                 <div class="cover"><i class="material-icons">home</i></div>
                 <li>Homepage</li>
+            </h:outputLink>
             </div>
-            <div class="link-wrapper">
+
+
+            <div class="link-wrapper"><h:outputLink value="dashboard.xhtml">
                 <div class="cover"><i class="material-icons">book</i></div>
                 <li>Book</li>
+            </h:outputLink>
             </div>
-            <div class="link-wrapper">
+
+
+            <div class="link-wrapper"><h:outputLink value="bookingList.xhtml">
+                <div class="cover"><i class="material-icons">history</i></div>
+                <li>Bookinghistory</li>
+            </h:outputLink>
+            </div>
+
+            <div class="link-wrapper"><h:outputLink value="#{loginController.logout()}">
                 <div class="cover"><i class="material-icons">lock_open</i></div>
                 <li>Logout</li>
+            </h:outputLink>
             </div>
         </ul>
     </div>
