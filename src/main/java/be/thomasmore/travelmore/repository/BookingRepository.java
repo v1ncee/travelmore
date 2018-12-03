@@ -20,6 +20,10 @@ public class BookingRepository {
         return entityManager.createNamedQuery(Booking.FIND_ALL, Booking.class).getResultList();
     }
 
+    public List<Booking> findBookingsByPersonId(int personId) {
+        return entityManager.createNamedQuery(Booking.FIND_BY_PERSON_ID, Booking.class).setParameter("personId", personId).getResultList();
+    }
+
     public void insert(Booking booking) {
         entityManager.persist(booking);
     }

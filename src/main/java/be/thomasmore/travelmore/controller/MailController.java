@@ -41,10 +41,10 @@ public class MailController {
         return statusMessage;
     }
 
-    public String send(String email, String firstName, String lastName) {
+    public String send(String email, String firstName, String lastName, String subject, String message) {
         statusMessage = "Message Sent";
         try {
-            MailService.sendMessage(email, "TravelMore | Registratie", "Beste " + firstName + " " + lastName + ", bedankt voor je registratie bij TravelMore!");
+            MailService.sendMessage(email, subject, message);
         }
         catch(MessagingException ex) {
             statusMessage = ex.getMessage();

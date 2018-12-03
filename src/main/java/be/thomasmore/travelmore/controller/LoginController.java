@@ -71,6 +71,7 @@ public class LoginController {
     }
 
 
+<<<<<<< HEAD
     public boolean isLoggedIn(){
         FacesContext context = FacesContext.getCurrentInstance();
         return context.getExternalContext().getSessionMap().containsKey("user");
@@ -78,5 +79,13 @@ public class LoginController {
 
     public String navigateToLogin(){
         return "login";
+=======
+    public void log() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+
+        setId(Integer.parseInt(session.getAttribute("id").toString()));
+        setName(session.getAttribute("name").toString());
+>>>>>>> aeae66777661807928866cfcd5783c72735b5834
     }
 }

@@ -11,6 +11,10 @@ public class TripRepository {
     @PersistenceContext(unitName = "travelMorePU")
     private EntityManager entityManager;
 
+//    public Trip findById(int id) {
+//        return entityManager.createNamedQuery(Trip.FIND_BY_ID, Trip.class).setParameter("id", id).getSingleResult();
+//    }
+
     public Trip findById(int id) {
         return entityManager.find(Trip.class, id);
     }
