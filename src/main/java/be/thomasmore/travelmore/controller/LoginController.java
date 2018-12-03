@@ -1,16 +1,12 @@
 package be.thomasmore.travelmore.controller;
 
-import be.thomasmore.travelmore.SessionUtilities;
 import be.thomasmore.travelmore.service.PersonService;
 import be.thomasmore.travelmore.domain.Person;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -20,6 +16,7 @@ public class LoginController {
 
     private Person newUser = new Person();
     private Person gebruikteUser = new Person();
+    private int userId;
 
     @Inject
     private PersonService personService;
@@ -40,12 +37,6 @@ public class LoginController {
         this.personService.insert(newUser);
     }
 
-    public String submitRegister(){
-        this.personService.insert(newUser);
-
-        return "registerBedankt";
-    }
-
     public Person getGebruikteUser(){
         return gebruikteUser;
     }
@@ -58,11 +49,21 @@ public class LoginController {
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("user", login);
 
-            return "loginBedankt";
+            setId(login.getId());
+
+            return "index";
         }else{
 
         }
         return "index";
+    }
+
+    public void setId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getId() {
+        return userId;
     }
 
     public String logout(){
@@ -74,6 +75,11 @@ public class LoginController {
         FacesContext context = FacesContext.getCurrentInstance();
         return context.getExternalContext().getSessionMap().containsKey("user");
     }
+
+//    public boolean getLoggedUser(){
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        return context.getExternalContext().getSessionMap().get("user");
+//    }
 
     public String navigateToLogin(){
         return "login";

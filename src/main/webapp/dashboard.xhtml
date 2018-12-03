@@ -36,8 +36,10 @@
                 <li>Homepage</li>
             </div>
             <div class="link-wrapper">
-                <div class="cover"><i class="material-icons">book</i></div>
-                <li>Book</li>
+                <a href="bookingList.xhtml">
+                    <div class="cover"><i class="material-icons">book</i></div>
+                    <li>Bookings</li>
+                </a>
             </div>
             <div class="link-wrapper">
                 <div class="cover"><i class="material-icons">lock_open</i></div>
@@ -129,7 +131,7 @@
                     </p:column>
                     <p:column headerText="Book">
                         <h:form>
-                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id)}"/>
+                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id, loginController.getId())}"/>
                         </h:form>
                     </p:column>
                 </p:dataTable>

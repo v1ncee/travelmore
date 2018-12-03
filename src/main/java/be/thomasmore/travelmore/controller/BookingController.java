@@ -59,17 +59,15 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public List<Booking> getBookingsByPerson() {
-        return this.bookingService.findBookingsByPersonId(personId);
+    public List<Booking> getBookingsByPerson(int userID) {
+        return this.bookingService.findBookingsByPersonId(userID);
     }
 
-    public String bookTrip(int tripID) {
+    public String bookTrip(int tripID, int userID) {
 //        FacesContext facesContext = FacesContext.getCurrentInstance();
 //        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-
         Trip trip = this.tripController.getTripWithId(tripID);
-        Person person = this.personService.findPersonById(loginController.getId());
-
+        Person person = this.personService.findPersonById(userID);
 
         newBooking.setPerson(person);
         newBooking.setTrip(trip);
