@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <h:outputStylesheet library="css" name="materialize.css" />
@@ -113,20 +112,21 @@
                         <label class="active" for="transport">Transport</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText id="start-date" styleClass="validate datepicker" binding="#{startDate}"/>
+                        <h:inputText id="start-date" styleClass="datepicker validate" binding="#{startDate}"/>
                         <label for="start-date">Start Date</label>
                     </div>
                     <div class="input-field">
-                        <h:inputText id="end-date" styleclass="validate datepicker" binding="#{endDate}"/>
+                        <h:inputText id="end-date" styleClass="datepicker validate" binding="#{endDate}"/>
                         <label for="end-date">End Date</label>
                     </div>
+
                     <h:commandButton styleClass="button-filter" value="filter"
                                      action="#{tripController.filterTable(departLocation.value, arrivalLocation.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
                                      ajax="false"/>
 
                 </h:form>
             </div>
-            <h:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
+            <h:dataTable var="trip" value="#{tripController.getTrips()}" styleClass="table-content" id="bookingDataTable">
                 <h:column headerText="Title">
                     <h:outputText value="#{trip.title}"/>
                 </h:column>
@@ -190,7 +190,6 @@
     <h:outputScript library="js" name="jquery.js" target="head"/>
     <h:outputScript library="js" name="materialize.js" target="head" />
     <h:outputScript target="head">
-        $ = jQuery;
         //<![CDATA[
         $(document).ready(function () {
             $('.materialboxed').materialbox();

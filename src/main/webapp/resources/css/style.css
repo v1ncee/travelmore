@@ -233,7 +233,7 @@ h1{
     text-align: center;
     clear:right;
 }
-.table-text table{
+.table-text .table-content{
     width:80vw;
 }
 .open-find{
