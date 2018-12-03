@@ -241,7 +241,7 @@ h1{
 .table-text table{
     width:80vw;
 }
-.open{
+.open-find{
     max-height: 50vh;
     transition: max-height 0.5s ease-in;
 }
