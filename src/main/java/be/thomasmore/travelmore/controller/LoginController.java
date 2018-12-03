@@ -6,15 +6,12 @@ import be.thomasmore.travelmore.domain.Person;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
+
 
 @ManagedBean
 @SessionScoped
@@ -57,9 +54,11 @@ public class LoginController {
 
         if (person != null) {
             HttpSession session = SessionUtilities.getSession();
+
             session.setAttribute("id", person.getId());
             session.setAttribute("name", person.getFirstName());
             session.setAttribute("email", person.getEmail());
+
             log();
 
             return "index";

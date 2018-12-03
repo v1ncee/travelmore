@@ -22,9 +22,9 @@
             <div class="logo"></div>
             <div class="login-buttons">
                 <div class="welcome">
-                   <h:panelGroup rendered="#{not empty name}">
-                               Welcome, #{loginController.getName()} //
-                            <h:outputLink value="#{loginController.logout()}">logout</h:outputLink>
+                    <h:panelGroup rendered="#{not empty name}">
+                        Welcome, #{loginController.getName()} //
+                        <h:outputLink value="#{loginController.logout()}">logout</h:outputLink>
                     </h:panelGroup>
 
                     <h:panelGroup rendered="#{empty name}">
@@ -103,24 +103,23 @@
         //<![CDATA[
         $(document).ready(function(){
             $('.materialboxed').materialbox();
-        var iEn = 1;
-        $(window).on('scroll', function() {
-            var hH = $('.logo').outerHeight(),
-                    wH = $(window).height() - hH,
-                    wS = $(this).scrollTop();
-            if ((wS >= wH) && iEn === 1) {
-                iEn = 0;
-                $(".logo").css("background-image",'url("./resources/images/logo2.png")');
-                $(".login-buttons a").css("color:","black");
-            }else if((wS <= wH) && iEn === 0){
-                $(".logo").css("background-image",'url("./resources/images/logo.png")');
-                $(".login-buttons a").css("color:","white");
-                iEn = 1;
-            }
-        });
+            var iEn = 1;
+            $(window).on('scroll', function() {
+                var hH = $('.logo').outerHeight(),
+                        wH = $(window).height() - hH,
+                        wS = $(this).scrollTop();
+                if ((wS >= wH) && iEn === 1) {
+                    iEn = 0;
+                    $(".logo").css("background-image",'url("./resources/images/logo2.png")');
+                    $(".login-buttons a").css("color:","black");
+                }else if((wS <= wH) && iEn === 0){
+                    $(".logo").css("background-image",'url("./resources/images/logo.png")');
+                    $(".login-buttons a").css("color:","white");
+                    iEn = 1;
+                }
+            });
         });
         //]]>
     </h:outputScript>
 </h:body>
 </html>
-
