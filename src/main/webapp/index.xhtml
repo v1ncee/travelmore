@@ -197,7 +197,7 @@
             $('.materialboxed').materialbox();
             var iEn = 1;
             $('#reveal').on('click', function () {
-                $('.section-table').toggleClass('open-find');
+                $('.section-table a').toggleClass('open-find');
             });
             $(window).on('scroll', function () {
 
@@ -208,9 +208,11 @@
                     iEn = 0;
                     $(".logo").css("background-image", 'url("./resources/images/logo2.png")');
                     $('.login-buttons').css('color', 'black');
+                    $('.login-buttons a').css('color','black');
                 } else if ((wS <= wH) && iEn === 0) {
                     $(".logo").css("background-image", 'url("./resources/images/logo.png")');
                     $('.login-buttons').css('color', 'white');
+                    $('.login-buttons a').css('color','white');
                     iEn = 1;
                 }
             });

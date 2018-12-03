@@ -56,9 +56,6 @@ html{
     font-size:18px;
     z-index:3;
 }
-.welcome{
-    color: #ffffff !important;
-}
 .logo{
     position: relative;
     margin-top:1%;
@@ -74,9 +71,7 @@ html{
     float:right;
     margin-top:1%;
     margin-right:1.5%;
-}
-.login-buttons a {
-    color: white;
+    color:white;
 }
 .wrapper-filter {
     position: relative;
