@@ -109,9 +109,8 @@ html{
 
 }
 .left-bar{
-
     width:10%;
-    height:100%;
+    height: inherit;
     background-color: #F7F7F7;
     float:left;
     clear:none;
@@ -225,6 +224,28 @@ h1{
 .button-text a{
     color: #525153;
 }
+
+.section-table{
+    display:inline-flex;
+    width:100%;
+    overflow: scroll;
+    transition: max-height 0.5s ease-out;
+    max-height: 0;
+    overflow-y: auto;
+}
+.table-text{
+    margin:0 auto;
+    text-align: center;
+    clear:right;
+}
+.table-text table{
+    width:80vw;
+}
+.open{
+    max-height: 50vh;
+    transition: max-height 0.5s ease-in;
+}
+
 .section-footer{
     display:inline-flex;
     width:100%;

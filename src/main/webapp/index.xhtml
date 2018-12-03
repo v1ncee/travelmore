@@ -24,13 +24,14 @@
                 <div class="welcome">
                     <h:panelGroup rendered="#{not empty name}">
                         Welcome, #{loginController.getName()} //
-                        <h:outputLink value="#{loginController.logout()}">logout</h:outputLink>
+                        <h:outputLink value="#{loginController.logout()}">Logout</h:outputLink>
+                        <h:outputLink value="dashboard.xhtml">Dashboard</h:outputLink>
                     </h:panelGroup>
 
                     <h:panelGroup rendered="#{empty name}">
-                        <h:outputLink value="login.xhtml">login</h:outputLink>
+                        <h:outputLink value="login.xhtml">Login</h:outputLink>
                         //
-                        <h:outputLink value="register.xhtml">register</h:outputLink>
+                        <h:outputLink value="register.xhtml">Register</h:outputLink>
                     </h:panelGroup>
                 </div>
             </div>
@@ -71,9 +72,99 @@
         <div class="extra-text">
             Don't wait start your dream journey right now!
             <div class="button">
-                <div class="button-text"><a href="#">Find More</a></div>
+                <div class="button-text" ><a id="reveal">Find More</a></div>
             </div>
         </div>
+    </div>
+    <div class="section-table">
+        <div class="left-bar"></div>
+        <div class="table-text">
+            <div>
+                <h:form>
+                    <div class="input-field">
+                        <h:selectOneMenu binding="#{departLocation}" id="departlocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="departlocation">Departlocation</label>
+                    </div>
+                    <div class="input-field">
+                        <h:selectOneMenu binding="#{arrivalLocation}" id="arrivallocation">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItems value="#{locationController.getLocations()}" var="l" itemLabel="#{l.name} (#{l.code})" itemValue="#{l.name}"/>
+                        </h:selectOneMenu>
+                        <label class="active" for="arrivallocation">Arrivallocation</label>
+                    </div>
+
+                    <div class="input-field">
+                        <h:inputText id="city" styleClass="validate" binding="#{city}"/>
+                        <label class="active" for="city">City</label>
+                    </div>
+                    <div class="input-field num">
+                        <h:inputText id="price" styleClass="validate" binding="#{price}"/>
+                        <label class="active" for="price">Price</label>
+                    </div>
+                    <div class="input-field num">
+                        <h:inputText id="people" styleClass="validate" binding="#{people}"/>
+                        <label class="active" for="people">Max. People</label>
+                    </div>
+                    <div class="input-field">
+                        <h:inputText id="transport" styleClass="validate" binding="#{transport}"/>
+                        <label class="active" for="transport">Transport</label>
+                    </div>
+                    <div class="input-field">
+                        <h:inputText id="start-date" styleClass="validate datepicker" binding="#{startDate}"/>
+                        <label for="start-date">Start Date</label>
+                    </div>
+                    <div class="input-field">
+                        <h:inputText id="end-date" styleclass="validate datepicker" binding="#{endDate}"/>
+                        <label for="end-date">End Date</label>
+                    </div>
+                    <h:commandButton styleClass="button-filter" value="filter"
+                                     action="#{tripController.filterTable(departLocation.value, arrivalLocation.value, city.value, price.value, people.value, transport.value, startDate.value, endDate.value)}"
+                                     ajax="false"/>
+
+                </h:form>
+            </div>
+            <h:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
+                <h:column headerText="Title">
+                    <h:outputText value="#{trip.title}"/>
+                </h:column>
+                <h:column headerText="Price">
+                    <h:outputText value="#{trip.price}"/>
+                </h:column>
+                <h:column headerText="Country">
+                    <h:outputText value="#{trip.country}"/>
+                </h:column>
+                <h:column headerText="City">
+                    <h:outputText value="#{trip.city}"/>
+                </h:column>
+                <h:column headerText="Max.People">
+                    <h:outputText value="#{trip.places}"/>
+                </h:column>
+                <h:column headerText="Transport">
+                    <h:outputText value="#{trip.transport}"/>
+                </h:column>
+                <h:column headerText="Depart location">
+                    <h:outputText value="#{trip.departlocation.name}"/>
+                </h:column>
+                <h:column headerText="Arrival location">
+                    <h:outputText value="#{trip.arrivallocation.name}"/>
+                </h:column>
+                <h:column headerText="Start Date">
+                    <h:outputText value="#{trip.startDate}"/>
+                </h:column>
+                <h:column headerText="End Date">
+                    <h:outputText value="#{trip.endDate}"/>
+                </h:column>
+                <h:column headerText="Book">
+                    <h:form>
+                        <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id)}"/>
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+        </div>
+
     </div>
     <div class="section-footer">
         <div class="footer-left">
@@ -104,21 +195,24 @@
         $(document).ready(function(){
             $('.materialboxed').materialbox();
             var iEn = 1;
+            $('#reveal').on('click', function(){
+                $('.section-table').toggleClass('open');
+            });
             $(window).on('scroll', function() {
+
                 var hH = $('.logo').outerHeight(),
                         wH = $(window).height() - hH,
                         wS = $(this).scrollTop();
                 if ((wS >= wH) && iEn === 1) {
                     iEn = 0;
-                    $(".logo").css("background-image",'url("./resources/images/logo2.png")');
-                    $(".login-buttons a").css("color:","black");
+                    $(".logo").css("background-image",'url("./img/logo2.png")');
+                    $('.login-box').css('color', '#333')
                 }else if((wS <= wH) && iEn === 0){
-                    $(".logo").css("background-image",'url("./resources/images/logo.png")');
-                    $(".login-buttons a").css("color:","white");
+                    $(".logo").css("background-image",'url("./img/logo.png")');
+                    $('.login-box').css('color', '#fff')
                     iEn = 1;
                 }
             });
-        });
         //]]>
     </h:outputScript>
 </h:body>
