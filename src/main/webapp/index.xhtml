@@ -192,27 +192,28 @@
     <h:outputScript target="head">
         $ = jQuery;
         //<![CDATA[
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.materialboxed').materialbox();
             var iEn = 1;
-            $('#reveal').on('click', function(){
+            $('#reveal').on('click', function () {
                 $('.section-table').toggleClass('open');
             });
-            $(window).on('scroll', function() {
+            $(window).on('scroll', function () {
 
                 var hH = $('.logo').outerHeight(),
                         wH = $(window).height() - hH,
                         wS = $(this).scrollTop();
                 if ((wS >= wH) && iEn === 1) {
                     iEn = 0;
-                    $(".logo").css("background-image",'url("./img/logo2.png")');
+                    $(".logo").css("background-image", 'url("./img/logo2.png")');
                     $('.login-box').css('color', '#333')
-                }else if((wS <= wH) && iEn === 0){
-                    $(".logo").css("background-image",'url("./img/logo.png")');
+                } else if ((wS <= wH) && iEn === 0) {
+                    $(".logo").css("background-image", 'url("./img/logo.png")');
                     $('.login-box').css('color', '#fff')
                     iEn = 1;
                 }
             });
+        });
         //]]>
     </h:outputScript>
 </h:body>
