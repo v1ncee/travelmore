@@ -37,17 +37,9 @@ public class AuthorizationFilter implements Filter {
 
             if (reqURI.indexOf("login.xhtml") >= 0
                     || reqURI.indexOf("register.xhtml") >= 0
-<<<<<<< HEAD
                     || reqURI.indexOf("index.xhtml") >=0
                     || reqURI.indexOf("dashboard.xhtml") >=0
                     || reqURI.indexOf("booking.xhtml") >=0
-                    || reqURI.indexOf("trips.xhtml") >=0
-=======
-                    || reqURI.indexOf("index.xhtml") >= 0
-                    || reqURI.indexOf("dashboard.xhtml") >= 0
-                    || reqURI.indexOf("booking.xhtml") >= 0
-                    || reqURI.indexOf("bookingList.xhtml") >= 0
->>>>>>> aeae66777661807928866cfcd5783c72735b5834
                     || (ses != null && ses.getAttribute("id") != null)
                     || reqURI.contains("javax.faces.resource"))
                 chain.doFilter(request, response);
