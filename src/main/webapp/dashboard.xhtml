@@ -31,15 +31,23 @@
         </div>
 
         <ul>
-            <h:outputLink value="index.xhtml"><div class="link-wrapper">
-                <div class="cover"><i class="material-icons">home</i></div>
-                <li>Homepage</li>
-            </div>
+            <h:outputLink value="index.xhtml">
+                <div class="link-wrapper">
+                    <div class="cover"><i class="material-icons">home</i></div>
+                    <li>Homepage</li>
+                </div>
             </h:outputLink>
-            <h:outputLink value="dashboard.xhtml"><div class="link-wrapper">
-                <div class="cover"><i class="material-icons">book</i></div>
-                <li>Book</li>
-            </div>
+            <h:outputLink value="dashboard.xhtml">
+                <div class="link-wrapper">
+                    <div class="cover"><i class="material-icons">book</i></div>
+                    <li>Book</li>
+                </div>
+            </h:outputLink>
+            <h:outputLink value="bookingList.xhtml">
+                <div class="link-wrapper">
+                    <div class="cover"><i class="material-icons">book</i></div>
+                    <li>Bookinghistory</li>
+                </div>
             </h:outputLink>
             <h:outputLink value="#{loginController.logout()}"><div class="link-wrapper">
                 <div class="cover"><i class="material-icons">lock_open</i></div>
@@ -132,7 +140,7 @@
                     </p:column>
                     <p:column headerText="Book">
                         <h:form>
-                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id)}"/>
+                            <h:commandLink value="Book" action="#{bookingController.bookTrip(trip.id, loginController.getId())}"/>
                         </h:form>
                     </p:column>
                 </p:dataTable>
