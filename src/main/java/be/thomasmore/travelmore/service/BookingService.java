@@ -25,12 +25,15 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
+    public List<Booking> findBookingsByPersonId(int personId) {
+        return bookingRepository.findBookingsByPersonId(personId);
+    }
 
     public void insert(Booking booking) {
         bookingRepository.insert(booking);
     }
 
-    public void  setPayed(Booking booking){
+    public void setPayed(Booking booking){
         bookingRepository.setPayed(booking);
     }
 

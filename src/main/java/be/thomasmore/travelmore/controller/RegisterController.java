@@ -37,7 +37,7 @@ public class RegisterController {
 
                 this.personService.insert(newPerson);
 
-                mail.send(email, firstName, lastName);
+                mail.send(email, firstName, lastName, "TravelMore | Registratie", "Beste " + firstName + " " + lastName + ", bedankt voor je registratie bij TravelMore!");
                 message1 = "Hi " + firstName + ", you are now registered. Please log in to book a trip.";
                 returnPage = "login";
             } else {

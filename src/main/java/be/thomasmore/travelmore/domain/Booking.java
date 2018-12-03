@@ -17,6 +17,11 @@ import javax.validation.constraints.Size;
                         query = "SELECT b FROM Booking b"
                 ),
                 @NamedQuery(
+                        name = Booking.FIND_BY_PERSON_ID,
+                        query = "SELECT b FROM Booking b INNER JOIN Person p ON b.person.id = p.id WHERE p.id = :personId"
+//                        "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where dl.name LIKE :name"
+                ),
+                @NamedQuery(
                         name = Booking.SETPAYED_BY_ID,
                         query = "UPDATE Booking b SET b.payed = :payed WHERE b.id = :id"
                 )
@@ -30,6 +35,7 @@ public class Booking {
 
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findByID";
+    public static final String FIND_BY_PERSON_ID = "Booking.findByPersonID";
     public static final String SETPAYED_BY_ID = "Booking.setPayedByID";
 
     @Id

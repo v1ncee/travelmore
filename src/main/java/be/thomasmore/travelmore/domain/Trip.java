@@ -6,49 +6,54 @@ import java.util.Date;
 
 @Entity
 @Table(name = "trip")
-@NamedQueries (
-    {
-        @NamedQuery(
-            name = Trip.FIND_ALL,
-                query = "SELECT t from Trip t"
-        ),
-            @NamedQuery(
-            name = Trip.FIND_ALL_LOCATION_NAME,
-            query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where l.name LIKE :name"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_FREE_PLACES,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.places >= :number"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_PRICE,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.price <= :price"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_TRANSPORT,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.transport LIKE :transport"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_PERIOD,
-                    query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_DEPARTLOCATION,
-                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_CITY,
-                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where t.city >= :city"
-            ),
-            @NamedQuery(
-                    name = Trip.FIND_ALL_ARRIVALLOCATION,
-                    query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where dl.name LIKE :name"
-            )
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Trip.FIND_BY_ID,
+                        query = "SELECT t from Trip t WHERE t.id = :id"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL,
+                        query = "SELECT t from Trip t"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_LOCATION_NAME,
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where l.name LIKE :name"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_FREE_PLACES,
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.places >= :number"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_PRICE,
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.price <= :price"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_TRANSPORT,
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.transport LIKE :transport"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_PERIOD,
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.startDate >= :startDate  and t.endDate <= :endDate"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_DEPARTLOCATION,
+                        query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.departlocation.id = dl.id Where dl.name LIKE :name"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_CITY,
+                        query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where t.city >= :city"
+                ),
+                @NamedQuery(
+                        name = Trip.FIND_ALL_ARRIVALLOCATION,
+                        query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where dl.name LIKE :name"
+                )
 
-    }
+        }
 )
 
 public class Trip {
+    public static final String FIND_BY_ID = "Trip.findById";
     public static final String FIND_ALL = "Trip.findAll";
     /*public static final String FIND_BY_CODE = "Trip.findByCode";*/
     public static final String FIND_ALL_LOCATION_NAME = "Trip.findAllLocationName";

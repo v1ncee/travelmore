@@ -29,16 +29,22 @@ public class BookingController {
     private Booking newBooking = new Booking();
     @Inject
     private BookingService bookingService;
-    private LoginController loginController;
-    private TripController tripController;
+    @Inject
+    private BookingService tripService;
+    @Inject
     private PersonService personService;
-    private TripService tripService;
+    @Inject
+    private TripController tripController;
+    @Inject
+    private MailController mailController;
+    @Inject
+    private LoginController loginController;
 
     private Person person = new Person();
     private Trip trip = new Trip();
     private Location location = new Location();
     private Boolean payed;
-    private int personId = 6;
+    private int personId = 1;
 
 
     public Booking getNewBooking() {
@@ -53,20 +59,16 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public void setPersonService(PersonService personService){
-        this.personService = personService;
-    }
-
-    public void setTripService(TripService tripService){
-        this.tripService = tripService;
+    public List<Booking> getBookingsByPerson() {
+        return this.bookingService.findBookingsByPersonId(personId);
     }
 
     public String bookTrip(int tripID) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+//        FacesContext facesContext = FacesContext.getCurrentInstance();
+//        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 
-        Trip trip = tripController.getTripId(tripID);
-        Person person = this.personService.findPersonById(personId);
+        Trip trip = this.tripController.getTripWithId(tripID);
+        Person person = this.personService.findPersonById(loginController.getId());
 
 
         newBooking.setPerson(person);
@@ -76,45 +78,30 @@ public class BookingController {
     }
 
     public String submit(String note, int persons){
-        payed = true;
-
-        /*
-        location.setName("Schiphol");
-        location.setCode("ams");
-
-        person.setFirstName("eloy");
-        person.setLastName("boone");
-        person.setEmail("eloy@test.com");
-        person.setPassKey("azerty");
-        person.setTypeUser(0);
-
-        trip.setTitle("testbooking");
-        trip.setCity("Brussel");
-        trip.setCountry("Belgium");
-        trip.setPrice(150);
-        trip.setTransport("Vliegtuig");
-        trip.setPlaces(5);
-        trip.setDepartlocation(location);
-        trip.setLocation(location);
-        */
+        payed = false;
 
         newBooking.setNote(note);
         newBooking.setPersons(persons);
         newBooking.setPayed(payed);
-//        newBooking.setPerson(person);
-//        newBooking.setTrip(trip);
         this.bookingService.insert(newBooking);
 
         return "dashboard";
     }
 
-    public void setPayed(){
-        //hier moet de huidige booking inkomen
-        Booking b = new Booking();
-        b.setId(3);
-        b.setPayed(true);
+    public void setPayed(int bookingId){
+        //set payed to true
+        Booking booking = this.bookingService.findBookingById(bookingId);
+        booking.setPayed(true);
 
-        this.bookingService.setPayed(b);
+        tripService.setPayed(booking);
+
+        //send mail after payment
+        Person person = booking.getPerson();
+        String email = person.getEmail();
+        String firstName = person.getFirstName();
+        String lastName = person.getLastName();
+
+        this.mailController.send(email, firstName, lastName, "TravelMore | Booking", "Beste " + firstName + " " + lastName + ", <br/>bedankt voor je boeking bij TravelMore! <br/><br/>Hier is je boeking: <br/><strong>Reis: </strong>" + booking.getTrip().getTitle() + " in " + booking.getTrip().getCity() + ", " + booking.getTrip().getCountry() + "<br/><strong>Datum: </strong>" + booking.getTrip().getStartDate() + " - " + booking.getTrip().getEndDate() + "<br/><strong>Aantal personen: </strong>" + booking.getPersons() + "<br/>");
     }
 
 }

@@ -25,7 +25,6 @@ public class TripController {
 
     @Inject
     private TripService tripService;
-    private LocationService locationService;
 
     public Trip getNewTrips() {
         return newTrip;
@@ -125,7 +124,7 @@ public class TripController {
         return trips;
     }
 
-    public Trip getTripId(int id){
+    public Trip getTripWithId(int id){
         Trip trip = this.tripService.findTripById(id);
         return trip;
     }

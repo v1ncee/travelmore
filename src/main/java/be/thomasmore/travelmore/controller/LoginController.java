@@ -79,8 +79,8 @@ public class LoginController {
     public void log() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-        setName(session.getAttribute("name").toString());
-        setId(Integer.parseInt(session.getAttribute("id").toString()));
 
+        setId(Integer.parseInt(session.getAttribute("id").toString()));
+        setName(session.getAttribute("name").toString());
     }
 }
