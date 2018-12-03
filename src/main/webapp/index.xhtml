@@ -195,9 +195,15 @@
         //<![CDATA[
         $(document).ready(function () {
             $('.materialboxed').materialbox();
+            $('.datepicker').datepicker(
+                    {
+                        format: 'yyyy-mm-dd'
+                    }
+            );
+            $('select').formSelect();
             var iEn = 1;
             $('#reveal').on('click', function () {
-                $('.section-table a').toggleClass('open-find');
+                $('.section-table').toggleClass('open-find');
             });
             $(window).on('scroll', function () {
 
