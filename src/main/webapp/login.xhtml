@@ -10,6 +10,8 @@
     <h:outputStylesheet library="css" name="icons.css" />
     <h:outputStylesheet library="css" name="login.css" />
     <h:outputStylesheet library="css" name="norm.css" />
+    <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+    <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
     <title>Travel More!</title>
 </h:head>
 <h:body>
@@ -33,7 +35,7 @@
                         <i class="material-icons prefix">lock</i>
                         <h:inputSecret id="passKey" binding="#{passKey}" required="true" label="Wachtwoord" />
                         <label for="passKey">Password</label>
-                        <h:commandButton styleClass="button" value="Inloggen" action="#{loginController.login(email.value, passKey.value)}" ajax="false"/>
+                        <h:commandButton styleClass="button" value="Inloggen" action="#{loginController.login(email.value, passKey.value)}"/>
                     </div>
                 </h:form>
 

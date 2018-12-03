@@ -1,7 +1,6 @@
 package be.thomasmore.travelmore;
 
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

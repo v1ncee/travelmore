@@ -22,16 +22,11 @@
             <div class="logo"></div>
             <div class="login-buttons">
                 <div class="welcome">
-                   <h:panelGroup rendered="#{empty name}">
-                               Welcome, #{loginController.getName()} //
-                            <h:outputLink value="#{loginController.logout()}">logout</h:outputLink>
-                    </h:panelGroup>
-
-                    <h:panelGroup rendered="#{not empty name}">
-                        <h:outputLink value="login.xhtml">login</h:outputLink>
-                        //
-                        <h:outputLink value="register.xhtml">register</h:outputLink>
-                    </h:panelGroup>
+                    <h:outputText rendered="#{not empty name}" value="Welcome, #{name}" />
+                    <h:outputLink rendered="#{not empty name}" value="#{loginController.logout()}">Logout</h:outputLink>
+                    <h:outputLink rendered="#{empty name}" value="login.xhtml">login</h:outputLink>
+                    //
+                    <h:outputLink rendered="#{empty name}" value="register.xhtml">register</h:outputLink>
                 </div>
             </div>
         </div>
