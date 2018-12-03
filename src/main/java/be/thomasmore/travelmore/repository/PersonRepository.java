@@ -33,6 +33,14 @@ public class PersonRepository {
         return entityManager.createNamedQuery(Person.VALIDATE, Person.class).setParameter("email", email).setParameter("passKey", passKey).getSingleResult();
     }
 
+    public Person compareLogin(Person compareLogin){
+        return entityManager.createNamedQuery(Person.COMPARE_LOGIN, Person.class)
+                .setParameter("email", compareLogin.getEmail())
+                .setParameter("password", compareLogin.getPassKey())
+                .getSingleResult();
+    }
+
+
     public void insert(Person person) {
         entityManager.persist(person);
     }

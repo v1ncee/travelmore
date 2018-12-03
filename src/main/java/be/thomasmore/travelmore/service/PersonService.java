@@ -30,6 +30,10 @@ public class PersonService {
         return personRepository.validate(email, password);
     }
 
+    public Person compareLogin(Person compareLogin){
+        return personRepository.compareLogin(compareLogin);
+    }
+
 
 
     public void insert(Person person) {

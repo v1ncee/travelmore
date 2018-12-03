@@ -23,6 +23,10 @@ import javax.validation.constraints.Size;
                 @NamedQuery(
                         name = Person.VALIDATE,
                         query = "select p from Person p where p.email = :email and p.passKey = :passKey"
+                ),
+                @NamedQuery(
+                        name = Person.COMPARE_LOGIN,
+                        query = "SELECT u FROM Person u WHERE u.email = :email AND u.passKey = :passKey"
                 )
         }
 )
@@ -31,6 +35,7 @@ public class Person {
     public static final String FIND_BY_ID = "Person.findByID";
     public static final String FIND_BY_EMAIL = "Person.findByEmail";
     public static final String VALIDATE = "Person.validate";
+    public static final String COMPARE_LOGIN = "User.compareLogin";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

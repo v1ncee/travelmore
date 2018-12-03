@@ -28,14 +28,14 @@
                 <h:form>
                     <div class="input-field" >
                         <i class="material-icons prefix">account_circle</i>
-                        <h:inputText id="email" binding="#{email}" required="true" label="Email" />
+                        <h:inputText id="email" value="#{loginController.gebruikteUser.email}" required="true" label="Email" />
                         <label for="email">E-mail</label>
                     </div>
                     <div class="input-field" >
                         <i class="material-icons prefix">lock</i>
-                        <h:inputSecret id="passKey" binding="#{passKey}" required="true" label="Wachtwoord" />
+                        <h:inputSecret id="passKey" value="#{loginController.gebruikteUser.passKey}" required="true" label="Wachtwoord" />
                         <label for="passKey">Password</label>
-                        <h:commandButton styleClass="button" value="Inloggen" action="#{loginController.login(email.value, passKey.value)}"/>
+                        <h:commandButton styleClass="button" value="Inloggen" action="#{loginController.login}"/>
                     </div>
                 </h:form>
 

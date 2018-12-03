@@ -140,8 +140,21 @@ public class TripController {
         return trips;
     }
 
-    public void submit(){
-        this.tripService.insert(newTrip);
+
+
+    public void submit(Location departLocation, Location arrivalLocation, String title, String country, String city, Double price, int people, String transport, Date startDate, Date endDate){
+        Trip nt = new Trip();
+            nt.setDepartlocation(departLocation);
+            nt.setArrivallocation(arrivalLocation);
+            nt.setTitle(title);
+            nt.setCity(city);
+            nt.setCountry(country);
+            nt.setPrice(price);
+            nt.setPlaces(people);
+            nt.setTransport(transport);
+            nt.setStartDate(startDate);
+            nt.setEndDate(endDate);
+        this.tripService.insert(nt);
     }
 
 }

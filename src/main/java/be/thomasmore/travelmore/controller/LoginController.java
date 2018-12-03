@@ -11,75 +11,72 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 @ManagedBean
 @SessionScoped
 public class LoginController {
 
-    private String name;
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private Person newUser = new Person();
+    private Person gebruikteUser = new Person();
 
     @Inject
     private PersonService personService;
 
-    public PersonService getPersonService(){
-        return personService;
+    public Person getNewUser() {
+        return newUser;
     }
 
-    public void setPersonService(PersonService personService){
-        this.personService = personService;
+    public void setNewUser(Person newUser) {
+        this.newUser = newUser;
     }
 
-    public String login(String email, String password) {
-        Person person = new Person();
+    public List<Person> getUsers(){
+        return this.personService.findAllPersons();
+    }
 
-        person = personService.validateLogin(email, password);
+    public void submit(){
+        this.personService.insert(newUser);
+    }
 
-        if (person != null) {
-            HttpSession session = SessionUtilities.getSession();
+    public String submitRegister(){
+        this.personService.insert(newUser);
 
-            session.setAttribute("id", person.getId());
-            session.setAttribute("name", person.getFirstName());
-            session.setAttribute("email", person.getEmail());
+        return "registerBedankt";
+    }
 
-            log();
+    public Person getGebruikteUser(){
+        return gebruikteUser;
+    }
 
-            return "index";
+    public String login(){
+        Person login = this.personService.compareLogin(gebruikteUser);
+
+        if(login != null){
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("user", login);
+
+            return "loginBedankt";
+        }else{
+
         }
+        return "index";
+    }
 
+    public String logout(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "login";
     }
 
-    public String logout()
-    {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession httpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
-        httpSession.invalidate();
-        return "logout.xhtml";
+
+    public boolean isLoggedIn(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        return context.getExternalContext().getSessionMap().containsKey("user");
     }
 
-    public void log() {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-        setName(session.getAttribute("name").toString());
-        setId(Integer.parseInt(session.getAttribute("id").toString()));
-
+    public String navigateToLogin(){
+        return "login";
     }
 }
