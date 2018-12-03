@@ -67,7 +67,7 @@ body{
     display:inline-flex;
     width:100%;
     text-align: center;
-    padding-top:5vh;
+    margin-bottom:5vh;
     cursor:pointer;
     z-index:2;
 }
