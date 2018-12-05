@@ -21,6 +21,8 @@ public class LoginController {
     private Person newUser = new Person();
     private Person gebruikteUser = new Person();
 
+
+
     @Inject
     private PersonService personService;
 
