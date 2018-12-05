@@ -13,10 +13,6 @@
         <param-value>true</param-value>
     </context-param>
 
-    <session-config>
-        <tracking-mode>COOKIE</tracking-mode>
-    </session-config>
-
     <!--For h:panelgroup rendered-->
     <context-param>
         <param-name>com.sun.faces.allowTextChildren</param-name>

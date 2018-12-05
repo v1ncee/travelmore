@@ -36,7 +36,7 @@ public class PersonRepository {
     public Person compareLogin(Person compareLogin){
         return entityManager.createNamedQuery(Person.COMPARE_LOGIN, Person.class)
                 .setParameter("email", compareLogin.getEmail())
-                .setParameter("password", compareLogin.getPassKey())
+                .setParameter("passKey", compareLogin.getPassKey())
                 .getSingleResult();
     }
 
