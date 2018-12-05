@@ -30,7 +30,14 @@ public class PersonRepository {
     }
 
     public Person validate(String email, String passKey) {
-        return entityManager.createNamedQuery(Person.VALIDATE, Person.class).setParameter("email", email).setParameter("passKey", passKey).getSingleResult();
+        List<Person> resultValidate = entityManager.createNamedQuery(Person.VALIDATE, Person.class).setParameter("email", email).setParameter("passKey", passKey).getResultList();
+
+        if (resultValidate.size() > 0) {
+            return resultValidate.get(0);
+        }
+        else {
+            return null;
+        }
     }
 
     public Person compareLogin(Person compareLogin){

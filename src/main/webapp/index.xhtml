@@ -21,17 +21,19 @@
             <div class="logo"></div>
             <div class="login-buttons">
                 <div class="welcome">
-                    <h:panelGroup rendered="#{not empty name}">
-                        Welcome, #{loginController.getName()} //
-                        <h:outputLink value="#{loginController.logout()}">Logout</h:outputLink>
-                        //
-                    </h:panelGroup>
-                    <h:outputLink value="dashboard.xhtml">Dashboard</h:outputLink>
-                    <h:panelGroup rendered="#{empty name}">
-                        <h:outputLink value="login.xhtml">Login</h:outputLink>
-                        //
-                        <h:outputLink value="register.xhtml">Register</h:outputLink>
-                    </h:panelGroup>
+                    <h:form>
+                        <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
+                            Welcome, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
+                            <h:commandLink action="dashboard.xhtml" value="dashboard"/> //
+                            <h:commandLink action="#{loginController.logout()}" value="logout"/>
+                        </h:panelGroup>
+
+                        <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName == null}">
+                            <h:commandLink action="login.xhtml" value="login"/>
+                            //
+                            <h:commandLink action="register.xhtml" value="register"/>
+                        </h:panelGroup>
+                    </h:form>
                 </div>
             </div>
         </div>
