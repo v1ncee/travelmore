@@ -67,27 +67,32 @@
     <div class="content">
         <div class="title-page">Book:</div>
         <div class="box">
-            <div class="table">
-                <p:dataTable var="booking" value="#{bookingController.getBookingsByPerson(loginController.getId())}" id="bookingDataTable">
-                    <p:column headerText="Title">
+            <div class="table dashboard-table">
+                <h:dataTable var="booking" value="#{bookingController.getBookingsByPerson(loginController.getId())}" id="bookingDataTable">
+                    <h:column>
+                        <f:facet name="header">Title</f:facet>
                         <h:outputText value="#{booking.trip.title}"/>
-                    </p:column>
-                    <p:column headerText="Note">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Note</f:facet>
                         <h:outputText value="#{booking.note}"/>
-                    </p:column>
-                    <p:column headerText="Persons">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Persons</f:facet>
                         <h:outputText value="#{booking.persons}"/>
-                    </p:column>
-                    <p:column headerText="Payed">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Payed</f:facet>
                         <h:outputText value="#{booking.payed}"/>
-                    </p:column>
-                    <p:column headerText="Pay">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Pay method</f:facet>
                         <h:form>
                             <h:commandLink value="Creditcard" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/> &nbsp;&nbsp;
                             <h:commandLink value="Paypal" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/>
                         </h:form>
-                    </p:column>
-                </p:dataTable>
+                    </h:column>
+                </h:dataTable>
             </div>
 
         </div>
