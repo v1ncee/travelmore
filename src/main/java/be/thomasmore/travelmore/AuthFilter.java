@@ -29,6 +29,7 @@ public class AuthFilter implements Filter {
 
             String reqURI = req.getRequestURI();
 
+            //not Logged in user may only go to login, register and index
             if (reqURI.contains("login.xhtml")
                     || reqURI.contains("register.xhtml")
                     || reqURI.contains("index.xhtml")

@@ -25,7 +25,8 @@
         <div class="title"></div>
         <div class="profile">
             <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
-                #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName}
+                Welcome to your dashboard, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
+                <h:commandLink action="#{loginController.logout()}" value="logout"/>
             </h:panelGroup>
         </div>
     </div>
