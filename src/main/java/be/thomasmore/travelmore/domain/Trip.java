@@ -30,7 +30,7 @@ import java.util.Date;
                 ),
                 @NamedQuery(
                         name = Trip.FIND_ALL_TRANSPORT,
-                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where t.transport LIKE :transport"
+                        query = "SELECT t FROM Trip t INNER JOIN Location l ON t.arrivallocation.id=l.id Where lower(t.transport) LIKE :transport"
                 ),
                 @NamedQuery(
                         name = Trip.FIND_ALL_PERIOD,
@@ -42,7 +42,7 @@ import java.util.Date;
                 ),
                 @NamedQuery(
                         name = Trip.FIND_ALL_CITY,
-                        query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where t.city >= :city"
+                        query = "SELECT t FROM Trip t INNER JOIN Location dl ON t.arrivallocation.id = dl.id Where lower(t.city) LIKE :city"
                 ),
                 @NamedQuery(
                         name = Trip.FIND_ALL_ARRIVALLOCATION,
