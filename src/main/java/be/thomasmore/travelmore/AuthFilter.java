@@ -33,7 +33,7 @@ public class AuthFilter implements Filter {
                     || reqURI.contains("register.xhtml")
                     || reqURI.contains("index.xhtml")
                     || (ses != null && ses.getAttribute("id") != null)
-                    || reqURI.contains("javax.faces.resource"))z
+                    || reqURI.contains("javax.faces.resource"))
                 chain.doFilter(request, response);
             else
                 res.sendRedirect(req.getContextPath() + "/login.xhtml");

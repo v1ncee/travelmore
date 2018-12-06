@@ -65,7 +65,7 @@ public class LoginController {
                 setGebruikteUser(login);
 
                 message1 = "";
-                returnPage = "index";
+                returnPage = "dashboard";
 
                 this.tripController.getAllTrips();
             } else {
