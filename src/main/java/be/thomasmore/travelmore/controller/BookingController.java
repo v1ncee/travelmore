@@ -89,10 +89,9 @@ public class BookingController {
         payed = false;
 
         if(newBooking.getTrip().getPlaces() < persons){
-            message1 = "The amount of persons of your booking must not exceed the maximum number of available places!";
-            setMessage(message1);
-            returnPage = "booking";
-            return returnPage;
+
+            return "booking";
+
         } else {
             newBooking.setNote(note);
             newBooking.setPersons(persons);
