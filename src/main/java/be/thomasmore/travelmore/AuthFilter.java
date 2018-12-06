@@ -32,7 +32,7 @@ public class AuthFilter implements Filter {
 
             if (reqURI.indexOf("login.xhtml") >= 0
                     || reqURI.indexOf("register.xhtml") >= 0
-                    || reqURI.indexOf("reis.xhtml") >= 0
+                    || reqURI.indexOf("index.xhtml") >= 0
                     || (ses != null && ses.getAttribute("user") != null)
                     || reqURI.contains("javax.faces.resource"))
                 chain.doFilter(request, response);
