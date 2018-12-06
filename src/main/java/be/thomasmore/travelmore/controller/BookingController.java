@@ -45,7 +45,15 @@ public class BookingController {
     private Location location = new Location();
     private Boolean payed;
     private int personId = 1;
+    private String message = "";
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Booking getNewBooking() {
         return newBooking;
@@ -76,14 +84,23 @@ public class BookingController {
     }
 
     public String submit(String note, int persons){
+        String message1;
+        String returnPage;
         payed = false;
 
-        newBooking.setNote(note);
-        newBooking.setPersons(persons);
-        newBooking.setPayed(payed);
-        this.bookingService.insert(newBooking);
+        if(newBooking.getTrip().getPlaces() < persons){
+            message1 = "The amount of persons of your booking must not exceed the maximum number of available places!";
+            setMessage(message1);
+            returnPage = "booking";
+            return returnPage;
+        } else {
+            newBooking.setNote(note);
+            newBooking.setPersons(persons);
+            newBooking.setPayed(payed);
+            this.bookingService.insert(newBooking);
 
-        return "dashboard";
+            return "dashboard";
+        }
     }
 
     public void setPayed(int bookingId){
