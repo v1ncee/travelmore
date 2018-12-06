@@ -95,8 +95,8 @@
                     <h:column>
                         <f:facet name="header">Pay method</f:facet>
                         <h:form>
-                            <h:commandLink value="Creditcard" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/> &nbsp;&nbsp;
-                            <h:commandLink value="Paypal" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/>
+                            <h:commandLink style="color: #000;" value="Creditcard" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/> &nbsp;&nbsp;
+                            <h:commandLink style="color: #000;" value="Paypal" action="#{bookingController.setPayed(booking.id)}" rendered="#{!booking.payed}"/>
                         </h:form>
                     </h:column>
                 </h:dataTable>
