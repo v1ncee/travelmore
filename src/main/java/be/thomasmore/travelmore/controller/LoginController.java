@@ -14,7 +14,6 @@ import java.util.List;
 @SessionScoped
 public class LoginController {
 
-//    private Person newUser = new Person();
     private Person gebruikteUser = new Person();
     private int userId;
     private String message = "";
@@ -69,7 +68,7 @@ public class LoginController {
 
                 this.tripController.getAllTrips();
             } else {
-                message1 = "The combination of the email and passord is incorrect. Please try again!";
+                message1 = "The combination of the email and password is incorrect. Please try again!";
                 returnPage = "login";
             }
         } else {
@@ -86,9 +85,5 @@ public class LoginController {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         setGebruikteUser(null);
         return "login.xhtml";
-    }
-
-    public void submit(){
-//        this.personService.insert(newUser);
     }
 }

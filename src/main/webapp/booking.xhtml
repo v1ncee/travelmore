@@ -12,6 +12,7 @@
     <h:outputStylesheet library="css" name="icons.css"/>
     <h:outputStylesheet library="css" name="norm.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="message.css"/>
     <title>Travel More!</title>
 </h:head>
 <h:body>
@@ -23,7 +24,14 @@
     </div>
     <div class="nav-bar">
         <div class="title"></div>
-        <div class="profile">Welcome, Kim Jong Un</div>
+        <div class="profile">
+            <h:form>
+                <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
+                    Welcome to your dashboard, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
+                    <h:commandLink style="color: #000;" action="#{loginController.logout()}" value="logout"/>
+                </h:panelGroup>
+            </h:form>
+        </div>
     </div>
     <div class="side-nav">
         <div class="title-wrapper">
@@ -79,6 +87,7 @@
                     </div>
                     <h:commandButton value="Book trip" action="#{bookingController.submit(note.value, persons.value)}" ajax="false"/>
                 </h:form>
+                <h:messages styleClass="places" globalOnly="true" />
             </div>
         </div>
     </div>

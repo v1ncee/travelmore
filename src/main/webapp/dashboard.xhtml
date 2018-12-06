@@ -23,7 +23,14 @@
     </div>
     <div class="nav-bar">
         <div class="title"></div>
-        <div class="profile">Welcome, Kim Jong Un</div>
+        <div class="profile">
+            <h:form>
+                <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
+                    Welcome to your dashboard, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
+                    <h:commandLink style="color: #000;" action="#{loginController.logout()}" value="logout"/>
+                </h:panelGroup>
+            </h:form>
+        </div>
     </div>
     <div class="side-nav">
         <div class="title-wrapper">
@@ -115,45 +122,56 @@
 
                 </h:form>
             </div>
-            <div class="table">
-                <p:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
-                    <p:column headerText="Title">
+            <div class="table dashboard-table">
+                <h:dataTable var="trip" value="#{tripController.getTrips()}" id="bookingDataTable">
+                    <h:column>
+                        <f:facet name="header">Title</f:facet>
                         <h:outputText value="#{trip.title}"/>
-                    </p:column>
-                    <p:column headerText="Price">
-                        <h:outputText value="#{trip.price}"/>
-                    </p:column>
-                    <p:column headerText="Country">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price</f:facet>
+                        <h:outputText value="€ #{trip.price}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Country</f:facet>
                         <h:outputText value="#{trip.country}"/>
-                    </p:column>
-                    <p:column headerText="City">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">City</f:facet>
                         <h:outputText value="#{trip.city}"/>
-                    </p:column>
-                    <p:column headerText="Max.People">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Max people</f:facet>
                         <h:outputText value="#{trip.places}"/>
-                    </p:column>
-                    <p:column headerText="Transport">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Transport</f:facet>
                         <h:outputText value="#{trip.transport}"/>
-                    </p:column>
-                    <p:column headerText="Depart location">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Depart location</f:facet>
                         <h:outputText value="#{trip.departlocation.name}"/>
-                    </p:column>
-                    <p:column headerText="Arrival location">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Arrival location</f:facet>
                         <h:outputText value="#{trip.arrivallocation.name}"/>
-                    </p:column>
-                    <p:column headerText="Start Date">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Start Date</f:facet>
                         <h:outputText value="#{trip.startDate}"/>
-                    </p:column>
-                    <p:column headerText="End Date">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">End Date</f:facet>
                         <h:outputText value="#{trip.endDate}"/>
-                    </p:column>
-                    <p:column headerText="Book">
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Book</f:facet>
                         <h:form>
-                            <h:commandLink value="Book"
+                            <h:commandLink styleClass="book" value="Book"
                                            action="#{bookingController.bookTrip(trip.id, loginController.getId())}"/>
                         </h:form>
-                    </p:column>
-                </p:dataTable>
+                    </h:column>
+                </h:dataTable>
             </div>
 
         </div>

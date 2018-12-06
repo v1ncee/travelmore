@@ -9,6 +9,7 @@ import be.thomasmore.travelmore.service.PersonService;
 import be.thomasmore.travelmore.service.TripService;
 import be.thomasmore.travelmore.controller.TripController;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
@@ -46,7 +47,6 @@ public class BookingController {
     private Boolean payed;
     private int personId = 1;
 
-
     public Booking getNewBooking() {
         return newBooking;
     }
@@ -78,12 +78,18 @@ public class BookingController {
     public String submit(String note, int persons){
         payed = false;
 
-        newBooking.setNote(note);
-        newBooking.setPersons(persons);
-        newBooking.setPayed(payed);
-        this.bookingService.insert(newBooking);
+        if(newBooking.getTrip().getPlaces() < persons){
+            FacesContext c = FacesContext.getCurrentInstance();
+            c.addMessage(null, new FacesMessage("Amount of people can't exceed the available amount of places for this trip"));
+            return "booking";
+        } else {
+            newBooking.setNote(note);
+            newBooking.setPersons(persons);
+            newBooking.setPayed(payed);
+            this.bookingService.insert(newBooking);
 
-        return "dashboard";
+            return "dashboard";
+        }
     }
 
     public void setPayed(int bookingId){
