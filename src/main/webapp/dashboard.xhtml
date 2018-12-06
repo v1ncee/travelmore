@@ -24,10 +24,12 @@
     <div class="nav-bar">
         <div class="title"></div>
         <div class="profile">
-            <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
-                Welcome to your dashboard, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
-                <h:commandLink action="#{loginController.logout()}" value="logout"/>
-            </h:panelGroup>
+            <h:form>
+                <h:panelGroup rendered="#{loginController.getGebruikteUser().firstName != null}">
+                    Welcome to your dashboard, #{loginController.getGebruikteUser().firstName} #{loginController.getGebruikteUser().lastName} //
+                    <h:commandLink style="color: #000;" action="#{loginController.logout()}" value="logout"/>
+                </h:panelGroup>
+            </h:form>
         </div>
     </div>
     <div class="side-nav">
