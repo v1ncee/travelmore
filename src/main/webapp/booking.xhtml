@@ -12,6 +12,7 @@
     <h:outputStylesheet library="css" name="icons.css"/>
     <h:outputStylesheet library="css" name="norm.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="message.css"/>
     <title>Travel More!</title>
 </h:head>
 <h:body>
@@ -79,6 +80,7 @@
                     </div>
                     <h:commandButton value="Book trip" action="#{bookingController.submit(note.value, persons.value)}" ajax="false"/>
                 </h:form>
+                <h:messages styleClass="places" globalOnly="true" />
             </div>
         </div>
     </div>
