@@ -210,5 +210,8 @@ body{
     padding: 5%;
     border-radius: 10px;
 }
+.dashboard-table {
+    padding: 2%;
+}
 
 
